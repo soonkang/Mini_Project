@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "992170704479",
+    "project_id": "mini-assignment-signup-login",
+    "storage_bucket": "mini-assignment-signup-login.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992170704479:android:9232ab279efe9bd93da5ea",
+        "android_client_info": {
+          "package_name": "com.sp.mini_assignment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH1D6g3XqweUa_eqi6ADvhljVeQm58wWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
