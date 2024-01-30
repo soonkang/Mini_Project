@@ -3,12 +3,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookedSlotFragment">
+    tools:context=".BookedSlotFragment"
+    android:background="@drawable/home_backdrop">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Booked Slot"
+            android:textSize="50dp"
+            android:textAlignment="center"
+            android:layout_marginTop="17dp"
+            android:layout_marginLeft="70dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:layout_width="420dp"
+                android:layout_height="480dp"
+                android:src="@drawable/background_blend"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="100dp"
+                android:fontFamily="serif"
+                android:text="YOYO"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="215dp"
+            android:layout_height="60dp"
+            android:background="@drawable/confirm_btn_background"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirm"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="25dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/timer_logo"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/confirm_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2m 34s"
+                android:paddingLeft="50dp"
+                android:textColor="@android:color/holo_red_light"
+                android:textStyle="bold"
+                android:layout_marginTop="18dp"
+                android:layout_marginLeft="110dp"/>
+
+        </FrameLayout>
+
+
+
+
+    </LinearLayout>
+
 
 </FrameLayout>
+
