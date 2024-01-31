@@ -55,7 +55,7 @@ public class SocialsFragment extends Fragment {
         facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openWebPage("https://facebook.com/ParkSwiftApp");
+                openWebPage("https://www.facebook.com/profile.php?id=61555746496197");
             }
         });
 
