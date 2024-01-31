@@ -43,7 +43,7 @@ public class SignUpFragment extends Fragment {
        signupUsername = rootView.findViewById(R.id.signup_username);
        signupPassword = rootView.findViewById(R.id.signup_password);
        signupButton = rootView.findViewById(R.id.signup_button);
-       loginRedirectText = rootView.findViewById(R.id.loginText);
+       loginRedirectText = rootView.findViewById(R.id.logintext);
 
        signupButton.setOnClickListener(new View.OnClickListener() {
            @Override
