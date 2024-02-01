@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="AboutFragment"
-    android:background="@drawable/background">
+    android:background="@drawable/background3">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -41,19 +41,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/version" />
 
+
         <TextView
-            android:id="@+id/desciption"
+            android:id="@+id/description"
             android:layout_width="410dp"
             android:layout_height="139dp"
+            android:layout_marginBottom="204dp"
             android:gravity="center"
             android:text="Students from Singapore Polytechnic To Solve urban parking space allocation Problem"
             android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="395dp" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -62,7 +64,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/desciption"
+            app:layout_constraintTop_toBottomOf="@+id/description"
             app:srcCompat="@drawable/sp"
             tools:srcCompat="@drawable/sp" />
 
