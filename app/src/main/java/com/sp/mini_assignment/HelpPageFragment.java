@@ -1,9 +1,9 @@
 package com.sp.mini_assignment;
 
 import android.os.Bundle;
-
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,15 +12,14 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-
 public class HelpPageFragment extends Fragment {
 
     SearchView searchBar;
     ListView helpList;
 
-    String[] helpOptionsList = {"Privacy & Security", "Payment, Billings & Refunds", "Frequently Asked Questions", "Contact Customer Support","Updates & Release Notes","Feedback Form", "Language Preference"};
-    String[] helpDescriptions = {"Description 1", "Description 2", "Description 3", "Description 4", "Description 5", "Description 6", "Description 7"};
-    int[] helpIcons = {R.drawable.privacy, R.drawable.payment, R.drawable.faq, R.drawable.support, R.drawable.updates,R.drawable.feedback, R.drawable.language};
+    String[] helpOptionsList = {"Profile Settings", "Frequently Asked Questions", "Contact Customer Support", "Language Preference","Feedback Form", "Payment, Billings & Refunds","Privacy & Security","Updates & Release Notes"};
+    String[] helpDescriptions = {"Description 1", "Description 2", "Description 3", "Description 4", "Description 5", "Description 6", "Description 7","Description 8"};
+    int[] helpIcons = {R.drawable.profile, R.drawable.faq, R.drawable.support, R.drawable.language,R.drawable.feedback, R.drawable.payment, R.drawable.privacy, R.drawable.updates};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,14 +29,16 @@ public class HelpPageFragment extends Fragment {
         helpList = rootView.findViewById(R.id.help_list);
 
         // Create a custom adapter with your custom layout
-        CustomListAdapter customAdapter = new CustomListAdapter(requireContext(), helpOptionsList, helpDescriptions, helpIcons);
+        HelpListAdapter customAdapter = new HelpListAdapter(requireContext(), helpOptionsList, helpDescriptions, helpIcons);
         helpList.setAdapter(customAdapter);
 
         helpList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = helpOptionsList[position];
-                Toast.makeText(requireContext(), "You Click - " + selectedItem, Toast.LENGTH_SHORT).show();
+
+                // Open a different page based on the clicked setting
+                openPageForSetting(selectedItem);
             }
         });
 
@@ -59,10 +60,34 @@ public class HelpPageFragment extends Fragment {
 
                 return false;
             }
-
         });
-
 
         return rootView;
     }
+
+    private void openPageForSetting(String setting) {
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+
+        if ("Frequently Asked Questions".equals(setting)) {
+            // Open FAQFragment
+            fragmentManager.beginTransaction().replace(R.id.fragment_container, new FAQFragment()).addToBackStack(null).commit();
+        } else if ("Contact Customer Support".equals(setting)) {
+            // Open CustomerSupportFragment
+            CustomerSupportFragment customerSupportFragment = new CustomerSupportFragment();
+            // Pass a flag indicating delayed visibility
+            Bundle args = new Bundle();
+            args.putBoolean("delayVisibility", true);
+            customerSupportFragment.setArguments(args);
+
+            fragmentManager.beginTransaction().replace(R.id.fragment_container, customerSupportFragment).addToBackStack(null).commit();
+        } else if("Language Preference".equals(setting)){
+            fragmentManager.beginTransaction().replace(R.id.fragment_container, new LanguageFragment()).addToBackStack(null).commit();
+
+        }
+
+        // Show the toast for all settings
+        Toast.makeText(requireContext(), "You Click - " + setting, Toast.LENGTH_SHORT).show();
+    }
+
+
 }

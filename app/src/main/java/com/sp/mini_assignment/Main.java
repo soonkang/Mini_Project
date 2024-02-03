@@ -2,7 +2,6 @@ package com.sp.mini_assignment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
 
 public class Main extends AppCompatActivity {
@@ -15,7 +14,7 @@ public class Main extends AppCompatActivity {
         // Begin the transaction
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
-        // Replace the content frame with the new fragment
+        // Replace the content frame with the HelpPageFragment initially
         fragmentTransaction.replace(R.id.fragment_container, new HelpPageFragment());
 
         // Commit the transaction

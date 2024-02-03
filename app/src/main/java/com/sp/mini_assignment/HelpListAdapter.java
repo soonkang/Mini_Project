@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CustomListAdapter extends ArrayAdapter<String> {
+public class HelpListAdapter extends ArrayAdapter<String> {
 
     private final Context context;
     private final List<String> originalTitles;
@@ -24,7 +24,7 @@ public class CustomListAdapter extends ArrayAdapter<String> {
     private final String[] descriptions;
     private final int[] icons;
 
-    public CustomListAdapter(Context context, String[] titles, String[] descriptions, int[] icons) {
+    public HelpListAdapter(Context context, String[] titles, String[] descriptions, int[] icons) {
         super(context, R.layout.help_list_layout, titles);
 
         this.context = context;
