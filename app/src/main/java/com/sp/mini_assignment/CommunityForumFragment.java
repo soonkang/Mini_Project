@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-public class CommunityForum extends Fragment {
+public class CommunityForumFragment extends Fragment {
 
     private RatingBar j8Rating;
     private ImageView favouriteImageView;
