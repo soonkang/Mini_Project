@@ -15,7 +15,7 @@ public class Main extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
         // Replace the content frame with the HelpPageFragment initially
-        fragmentTransaction.replace(R.id.fragment_container, new HelpPageFragment());
+        fragmentTransaction.replace(R.id.fragment_container, new CommunityForum());
 
         // Commit the transaction
         fragmentTransaction.commit();
