@@ -1,7 +1,6 @@
 package com.sp.mini_assignment;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 
@@ -12,31 +11,26 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Create an instance of Fragment_Add_Card
-        Fragment_Paypal fragmentPaypal = new Fragment_Paypal();
-
-        // Add Fragment_Add_Card to the activity
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, fragmentPaypal)
-                .addToBackStack(null)
-                .commit();
+        // Directly switch to Fragment_feedback when the activity starts
+        switchToFragmentFeedback(null); // Passing null as there are no card details initially
     }
 
-    // Method to switch to Fragment_Payment with card details
-    public void switchToFragmentPayment(String cardDetails) {
-        Log.d("Main", "Switching to Fragment_Payment");
+    // Method to switch to Fragment_feedback with card details
+    public void switchToFragmentFeedback(String cardDetails) {
+        Log.d("Main", "Switching to Fragment_feedback");
 
-        Fragment_payment fragmentPayment = new Fragment_payment();
+        // Create an instance of Fragment_feedback
+        Fragment_fedback fragmentFeedback = new Fragment_fedback();
 
+        // Pass card details to Fragment_feedback using Bundle
         Bundle bundle = new Bundle();
         bundle.putString("cardDetails", cardDetails);
-        fragmentPayment.setArguments(bundle);
+        fragmentFeedback.setArguments(bundle);
 
+        // Replace the current fragment with Fragment_feedback
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, fragmentPayment)
+                .replace(R.id.fragment_container, fragmentFeedback)
                 .addToBackStack(null)
                 .commit();
     }
-
-
 }

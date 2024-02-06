@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "719469217835",
+    "firebase_url": "https://fedback-form-643f8-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "fedback-form-643f8",
+    "storage_bucket": "fedback-form-643f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719469217835:android:68974d7e43bbb0d803426e",
+        "android_client_info": {
+          "package_name": "com.sp.mini_assignment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo7EqoJs63cz6Ofr0W0jEJWNsWrqhQWeU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

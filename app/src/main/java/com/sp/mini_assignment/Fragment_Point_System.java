@@ -1,64 +1,90 @@
 package com.sp.mini_assignment;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_Point_System#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class Fragment_Point_System extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
+    private Button redeemButton50;
+    private Button redeemButton300;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Fragment_Point_System() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment_Point_System.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Fragment_Point_System newInstance(String param1, String param2) {
-        Fragment_Point_System fragment = new Fragment_Point_System();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment__point__system, container, false);
+
+        // Initialize Firebase
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+
+        // Initialize views
+        redeemButton50 = view.findViewById(R.id.redeem_50);
+        redeemButton300 = view.findViewById(R.id.redeem_300);
+
+        // Add click listeners to redeem buttons
+        redeemButton50.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                redeemPoints(50);
+            }
+        });
+
+        redeemButton300.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                redeemPoints(300);
+            }
+        });
+
+        return view;
+    }
+
+    // Method to deduct points from the user's balance
+    private void redeemPoints(final int pointsToDeduct) {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            final String userId = user.getUid();
+            mDatabase.child("users").child(userId).child("coins").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        int currentCoins = dataSnapshot.getValue(Integer.class);
+                        if (currentCoins >= pointsToDeduct) {
+                            int newCoins = currentCoins - pointsToDeduct;
+                            mDatabase.child("users").child(userId).child("coins").setValue(newCoins);
+                            // Perform action after deducting coins
+                            // For example, show a success message
+                            Toast.makeText(getContext(), "Points redeemed successfully", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Handle insufficient balance error
+                            Toast.makeText(getContext(), "Insufficient points", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Handle database error
+                    Toast.makeText(getContext(), "Database error", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment__point__system, container, false);
     }
 }

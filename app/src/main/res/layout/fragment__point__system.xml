@@ -203,7 +203,7 @@
                     app:layout_constraintVertical_bias="0.14" />
 
                 <TextView
-                    android:id="@+id/textView28"
+                    android:id="@+id/coins"
                     android:layout_width="33dp"
                     android:layout_height="38dp"
                     android:layout_marginEnd="104dp"
@@ -282,7 +282,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/redeem_50"
                     android:layout_width="95dp"
                     android:layout_height="45dp"
                     android:text="Redeem"
@@ -333,7 +333,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/redeem_300"
                     android:layout_width="95dp"
                     android:layout_height="45dp"
                     android:text="Redeem"

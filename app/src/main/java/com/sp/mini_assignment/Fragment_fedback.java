@@ -1,64 +1,126 @@
 package com.sp.mini_assignment;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RatingBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_fedback#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.firebase.client.Firebase;
+
+
 public class Fragment_fedback extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Fragment_fedback() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment_fedback.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Fragment_fedback newInstance(String param1, String param2) {
-        Fragment_fedback fragment = new Fragment_fedback();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    EditText Name, Email, comment;
+    TextView ratingError;
+    RatingBar rating;
+    Button send, details;
+    Firebase firebase;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_fedback, container, false);
+
+        Name = view.findViewById(R.id.Name);
+        Email = view.findViewById(R.id.Email);
+        comment = view.findViewById(R.id.comment);
+        rating = view.findViewById(R.id.rating);
+        ratingError = view.findViewById(R.id.ratingError);
+        send = view.findViewById(R.id.Submit);
+        details = view.findViewById(R.id.view);
+
+        Firebase.setAndroidContext(requireContext());
+
+        String uniqueID = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
+        if (uniqueID != null) {
+            firebase = new Firebase("https://fedback-form-643f8-default-rtdb.asia-southeast1.firebasedatabase.app/" + uniqueID);
         }
+
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendDataToFirebase();
+            }
+        });
+
+        return view;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fedback, container, false);
+    private void sendDataToFirebase() {
+        String name = Name.getText().toString();
+        String email = Email.getText().toString();
+        String message = comment.getText().toString();
+        float rate = rating.getRating();
+
+        Firebase child_name = firebase.child("Name");
+        child_name.setValue(name);
+        if (name.isEmpty()) {
+            Name.setError("This is skrequired field");
+            send.setEnabled(false);
+        } else {
+            Name.setError(null);
+            send.setEnabled(true);
+        }
+
+        Firebase child_email = firebase.child("Email");
+        child_email.setValue(email);
+        if (email.isEmpty()) {
+            Email.setError("This is required field");
+            send.setEnabled(false);
+        } else {
+            Email.setError(null);
+            send.setEnabled(true);
+        }
+
+        Firebase child_message = firebase.child("Comments");
+        child_message.setValue(message);
+        if (message.isEmpty()) {
+            comment.setError("This is required field");
+            send.setEnabled(false);
+        } else {
+            comment.setError(null);
+            send.setEnabled(true);
+        }
+
+        Firebase child_rate = firebase.child("Rate");
+        child_rate.setValue(rate);
+        if (rate == 0) {
+            ratingError.setText("This is a required field");
+            send.setEnabled(false);
+        } else {
+            ratingError.setText(null);
+            send.setEnabled(true);
+        }
+
+        Toast.makeText(requireContext(), "Your data was sent to the server", Toast.LENGTH_SHORT).show();
+
+        details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDetailsDialog(name, email, message);
+            }
+        });
+        Fragment_fedback_submitted fragmentSubmitted = new Fragment_fedback_submitted();
+        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, fragmentSubmitted);
+        transaction.addToBackStack(null);  // Add the transaction to the back stack
+        transaction.commit();
+    }
+
+    private void showDetailsDialog(String name, String email, String message) {
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Sent details")
+                .setMessage("Name - " + name + "\n\nEmail - " + email + "\n\nComments - " + message)
+                .show();
     }
 }

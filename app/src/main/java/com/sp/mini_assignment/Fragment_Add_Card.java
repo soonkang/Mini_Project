@@ -55,7 +55,7 @@ public class Fragment_Add_Card extends Fragment {
                 saveCardDetails(cardDetails);
 
                 // Navigate to Fragment_payment or perform other actions
-                ((Main) requireActivity()).switchToFragmentPayment(cardDetails.toString()); // Assuming cardDetails has a useful toString() method
+//                ((Main) requireActivity()).switchToFragmentPayment(cardDetails.toString()); // Assuming cardDetails has a useful toString() method
             }
         });
 
