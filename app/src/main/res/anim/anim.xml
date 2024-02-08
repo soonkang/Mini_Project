@@ -12,15 +12,7 @@
         android:pivotY="50%"
         android:startOffset="200" />
 
-<!--    &lt;!&ndash; Rotate &ndash;&gt;-->
-<!--    <rotate-->
-<!--        android:fromDegrees="0"-->
-<!--        android:toDegrees="360"-->
-<!--        android:duration="3000"-->
-<!--        android:pivotX="50%"-->
-<!--        android:pivotY="50%" />-->
 
-    <!-- Translate from right to middle -->
     <translate
         android:fromXDelta="100%p"
         android:toXDelta="0"

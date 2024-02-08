@@ -22,12 +22,14 @@ public class SplashActivity extends AppCompatActivity {
 
         // Find the TextView by its ID
         ImageView animTextView = findViewById(R.id.anim);
+        TextView text = findViewById(R.id.animText);
 
         // Load the Netflix-like splash animation
-        Animation netflixSplashAnimation = AnimationUtils.loadAnimation(this, R.anim.anim);
+        Animation logoSplashAnimation = AnimationUtils.loadAnimation(this, R.anim.anim);
+        Animation textAnimation = AnimationUtils.loadAnimation(this, R.anim.text);
 
         // Set the animation listener to start the Main activity when the animation ends
-        netflixSplashAnimation.setAnimationListener(new Animation.AnimationListener() {
+        logoSplashAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
                 // Start playing the background music when the animation starts
@@ -52,7 +54,9 @@ public class SplashActivity extends AppCompatActivity {
         });
 
         // Start the animation on the TextView
-        animTextView.startAnimation(netflixSplashAnimation);
+        animTextView.startAnimation(logoSplashAnimation);
+        text.startAnimation(textAnimation);
+
     }
 
     private void playBackgroundMusic() {

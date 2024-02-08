@@ -2,7 +2,6 @@ package com.sp.mini_assignment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 public class Main extends AppCompatActivity {
 
@@ -11,26 +10,18 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Directly switch to Fragment_feedback when the activity starts
-        switchToFragmentFeedback(null); // Passing null as there are no card details initially
+        // Directly switch to Fragment_Point_System when the activity starts
+        switchToFragmentProfile();
     }
 
-    // Method to switch to Fragment_feedback with card details
-    public void switchToFragmentFeedback(String cardDetails) {
-        Log.d("Main", "Switching to Fragment_feedback");
+    // Method to switch to Fragment_Point_System
+    public void switchToFragmentProfile() {
+        // Create an instance of Fragment_Point_System
+        fragment_profile fragmentProfile = new fragment_profile();
 
-        // Create an instance of Fragment_feedback
-        Fragment_fedback fragmentFeedback = new Fragment_fedback();
-
-        // Pass card details to Fragment_feedback using Bundle
-        Bundle bundle = new Bundle();
-        bundle.putString("cardDetails", cardDetails);
-        fragmentFeedback.setArguments(bundle);
-
-        // Replace the current fragment with Fragment_feedback
+        // Replace the current fragment with Fragment_Point_System
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, fragmentFeedback)
-                .addToBackStack(null)
+                .replace(R.id.fragment_container, fragmentProfile)
                 .commit();
     }
 }

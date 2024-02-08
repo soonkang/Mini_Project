@@ -1,10 +1,15 @@
 package com.sp.mini_assignment;
 
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,8 +18,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
@@ -45,10 +48,24 @@ public class Fragment_Paypal extends Fragment {
         btnPayment = view.findViewById(R.id.btnPayment);
         configuration = new PayPalConfiguration().environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
                 .clientId(clientID);
+
+        // Create notification channel
+        createNotificationChannel();
+
         btnPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getPayment();
+
+                // Display notification
+                NotificationCompat.Builder mbuilder = new NotificationCompat.Builder(requireContext(), "payment_channel")
+                        .setSmallIcon(R.drawable.baseline_notifications_active_24)
+                        .setContentTitle("Notification")
+                        .setContentText("Payment Processing");
+
+                NotificationManager notificationManager = (NotificationManager)
+                        requireActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+                notificationManager.notify(0, mbuilder.build());
             }
         });
 
@@ -97,4 +114,18 @@ public class Fragment_Paypal extends Fragment {
         requireContext().stopService(intent);
     }
 
+    // Create a notification channel
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "Payment Channel";
+            String description = "Channel for payment notifications";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("payment_channel", name, importance);
+            channel.setDescription(description);
+
+            // Register the channel with the system; you can't change the importance or other notification behaviors after this
+            NotificationManager notificationManager = requireActivity().getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
 }
