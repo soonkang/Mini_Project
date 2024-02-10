@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/close_bottomdialog_bg">
+    
+    <ImageView
+        android:id="@+id/close_dialog"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/close_bottomdialog_logo"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"/>
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Available Parking Slots"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Parking slots list -->
+    <ImageView
+        android:id="@+id/parkingSlotsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:padding="8dp"
+        android:scaleType="center"
+        android:src="@drawable/carpark_live"
+        android:scrollbars="vertical"/>
+
+    <!-- Close button -->
+    <FrameLayout
+        android:id="@+id/BookNow"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/background_blend"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book Now"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center"/>
+    </FrameLayout>
+</LinearLayout>

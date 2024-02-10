@@ -1,14 +1,24 @@
 {
   "project_info": {
+<<<<<<< HEAD
     "project_number": "719469217835",
     "firebase_url": "https://fedback-form-643f8-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "fedback-form-643f8",
     "storage_bucket": "fedback-form-643f8.appspot.com"
+=======
+    "project_number": "986149976070",
+    "project_id": "carparks-ddecb",
+    "storage_bucket": "carparks-ddecb.appspot.com"
+>>>>>>> Harold
   },
   "client": [
     {
       "client_info": {
+<<<<<<< HEAD
         "mobilesdk_app_id": "1:719469217835:android:68974d7e43bbb0d803426e",
+=======
+        "mobilesdk_app_id": "1:986149976070:android:715a5e06725361d34deb87",
+>>>>>>> Harold
         "android_client_info": {
           "package_name": "com.sp.mini_assignment"
         }
@@ -16,7 +26,11 @@
       "oauth_client": [],
       "api_key": [
         {
+<<<<<<< HEAD
           "current_key": "AIzaSyCo7EqoJs63cz6Ofr0W0jEJWNsWrqhQWeU"
+=======
+          "current_key": "AIzaSyDBSJxc8xgpbe1GT9V_a0v0TbSEuRL0QDc"
+>>>>>>> Harold
         }
       ],
       "services": {

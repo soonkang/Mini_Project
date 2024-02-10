@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Settings.SettingsFragment"
+    android:background="@drawable/background_blend">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/home_backdrop"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/settings_logo_white"
+                android:layout_marginLeft="240dp"
+                android:layout_marginTop="25dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="45dp"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="75dp"
+                android:layout_marginTop="67dp"
+                android:text="Account Information"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:textStyle="italic"
+                tools:ignore="TextSizeCheck" />
+
+            <ImageView
+                android:layout_width="350dp"
+                android:layout_height="420dp"
+                android:src="@drawable/settings_background"
+                android:layout_marginLeft="33dp"
+                android:layout_marginTop="90dp"/>
+
+
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="410dp"
+                android:layout_marginTop="95dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="60dp"
+                        android:text="Login &amp; Security"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="315dp"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="50dp"
+                            android:src="@drawable/settings_row_background" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="55dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/profile_logo" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+                            android:layout_marginLeft="128dp"
+                            android:layout_marginTop="20dp"
+                            android:text="Profile"/>
+
+
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="315dp"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/settings_row_background" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="55dp"
+                            android:layout_marginTop="20dp"
+                            android:src="@drawable/phone_logo" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+                            android:layout_marginLeft="128dp"
+                            android:layout_marginTop="30dp"
+                            android:text="Tel No"/>
+
+
+
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="315dp"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/settings_row_background" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="60dp"
+                            android:layout_marginTop="20dp"
+                            android:src="@drawable/mail_logo" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+                            android:layout_marginLeft="130dp"
+                            android:layout_marginTop="30dp"
+                            android:text="Email"/>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+                        <ImageView
+                            android:layout_width="315dp"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/settings_row_background" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/password_logo"
+                            android:layout_marginLeft="60dp"
+                            android:layout_marginTop="15dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+                            android:layout_marginLeft="132dp"
+                            android:layout_marginTop="30dp"
+                            android:text="Password"/>
+
+                    </FrameLayout>
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="60dp"
+                        android:text="Miscellaneous"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                    
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="315dp"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="50dp"
+                            android:src="@drawable/settings_row_background" />
+                        
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/notification_logo"
+                            android:layout_marginLeft="55dp"
+                            android:layout_marginTop="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+                            android:layout_marginLeft="130dp"
+                            android:layout_marginTop="22dp"
+                            android:text="Notifications"/>
+                        
+                        
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="315dp"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/settings_row_background" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/chat_logo"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="55dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+                            android:layout_marginLeft="130dp"
+                            android:layout_marginTop="30dp"
+                            android:text="Communications"/>
+                    </FrameLayout>
+
+                    
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="315dp"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/settings_row_background" />
+                        
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/booked_slot_logo"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="55dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+                            android:layout_marginLeft="130dp"
+                            android:layout_marginTop="30dp"
+                            android:text="Booked Slot"/>
+                        
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="315dp"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/settings_row_background" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/history_logo"
+                            android:layout_marginLeft="55dp"
+                            android:layout_marginTop="20dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+                            android:layout_marginLeft="130dp"
+                            android:layout_marginTop="30dp"
+                            android:text="History"/>
+                    </FrameLayout>
+                    
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="315dp"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/settings_row_background" />
+                        
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/rating_logo"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="55dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+                            android:layout_marginLeft="130dp"
+                            android:layout_marginTop="30dp"
+                            android:text="Rating/Feedback"/>
+                    </FrameLayout>
+
+                    
+
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="315dp"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/settings_row_background" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/points_logo"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="55dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+                            android:layout_marginLeft="130dp"
+                            android:layout_marginTop="30dp"
+                            android:text="Points"/>
+
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="315dp"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/settings_row_background" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/subscription_logo"
+                            android:layout_marginLeft="55dp"
+                            android:layout_marginTop="20dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+                            android:layout_marginLeft="130dp"
+                            android:layout_marginTop="30dp"
+                            android:text="Subscriptions"/>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="315dp"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/settings_row_background" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/promotions_logo"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="55dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+                            android:layout_marginLeft="130dp"
+                            android:layout_marginTop="30dp"
+                            android:text="Promotions/Offers"/>
+
+                    </FrameLayout>
+
+
+
+
+
+
+                </LinearLayout>
+
+            </ScrollView>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="350dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/settings_background"
+                    android:layout_marginLeft="33dp"
+                    android:layout_marginTop="520dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/deactivate_logo"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="520dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Deactivate"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="30dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="535dp"
+                    android:layout_marginLeft="160dp"/>
+
+            </FrameLayout>
+
+
+        </FrameLayout>
+
+
+
+        
+    </LinearLayout>
+    
+
+</FrameLayout>

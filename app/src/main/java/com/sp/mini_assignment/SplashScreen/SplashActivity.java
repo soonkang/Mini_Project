@@ -1,4 +1,4 @@
-package com.sp.mini_assignment;
+package com.sp.mini_assignment.SplashScreen;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -10,6 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+
+import com.sp.mini_assignment.Home.Main;
+import com.sp.mini_assignment.R;
 
 public class SplashActivity extends AppCompatActivity {
 
