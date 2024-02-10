@@ -6,7 +6,8 @@
                 android:type="radial"
                 android:startColor="@color/slot_select_start_bg"
                 android:endColor="@color/slot_select_end_bg"
-                android:angle="45" />
+                android:angle="45"
+                android:gradientRadius="50dp"/>
         </shape>
 
 

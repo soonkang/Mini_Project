@@ -1,103 +1,150 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QRScannerFragment"
-    android:background="@drawable/background_blend">
+    android:fillViewport="true">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <!-- Your existing ImageView -->
-        <ImageView
-            android:id="@+id/backdrop"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:scaleType="center"
-            android:src="@drawable/backdrop"
-            android:adjustViewBounds="true"/>
-
-        <ImageView
-            android:id="@+id/QR_FLASH"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_flash_on_24"
-            android:layout_marginLeft="340dp"
-            android:layout_marginTop="95dp"
-            android:clickable="true"/>
-
-    </RelativeLayout>
-
-    <!-- FrameLayout to hold the PreviewView and the ImageView -->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_gravity="center">
-
-        <!-- ImageView behind the PreviewView -->
-        <ImageView
-            android:layout_width="550dp"
-            android:layout_height="550dp"
-            android:layout_gravity="center"
-            android:src="@drawable/qr_scanner_outline"
-            android:adjustViewBounds="true"
-            android:paddingLeft="11dp"/>
-
-        <!-- PreviewView on top of the ImageView -->
-        <androidx.camera.view.PreviewView
-            android:id="@+id/qr_scanner"
-            android:layout_width="280dp"
-            android:layout_height="280dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="6dp"
-            android:src="@drawable/qr_scanner_outline"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="550dp"
-            android:text="Located At Entry Point"
-            android:textColor="@android:color/holo_red_light"
-            android:textSize="18sp"
-            android:paddingLeft="6dp"
-            android:textStyle="bold"/>
+        android:layout_height="match_parent"
+        tools:context=".QRScanner.QRScannerFragment"
+        android:background="@drawable/background_blend">
 
         <LinearLayout
-            android:layout_width="180dp"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="600dp"
-            android:background="@drawable/button_rounded"
-            android:clickable="true">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="60dp"
-                android:src="@drawable/qr_scanner_outline"
-                android:paddingRight="0dp"
-                android:clickable="true"/>
+            <!-- Your existing content here -->
 
-            <TextView
-                android:id="@+id/scanQRbtn"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- Your existing ImageView -->
+                <ImageView
+                    android:id="@+id/backdrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:scaleType="center"
+                    android:src="@drawable/backdrop"
+                    android:adjustViewBounds="true"/>
+
+            </RelativeLayout>
+
+            <!-- FrameLayout to hold the PreviewView and the ImageView -->
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/green"
-                android:clickable="true"
-                android:paddingRight="0dp"
-                android:text="Scan QR"
-                android:layout_marginTop="12dp"
-                android:textSize="25dp"
-                android:textColor="@color/white" />
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_gravity="center">
+
+                <!-- ImageView behind the PreviewView -->
+                <ImageView
+                    android:layout_width="550dp"
+                    android:layout_height="520dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="-60dp"
+                    android:src="@drawable/qr_scanner_outline"
+                    android:adjustViewBounds="true"
+                    android:paddingLeft="11dp"/>
+
+                <!-- PreviewView on top of the ImageView -->
+                <ImageView
+                    android:id="@+id/qr_scanner_img"
+                    android:layout_width="280dp"
+                    android:layout_height="280dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="-53dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="340dp"
+                    android:text="Located At Entry Point"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="18sp"
+                    android:paddingLeft="6dp"
+                    android:textStyle="bold"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="370dp"
+                    android:gravity="center"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:background="@drawable/button_rounded"
+                        android:clickable="true"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/qr_scanner_outline"
+                            android:paddingRight="0dp"
+                            android:clickable="true"/>
+
+                        <TextView
+                            android:id="@+id/scanQRbtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:clickable="true"
+                            android:paddingRight="0dp"
+                            android:text="Scan QR"
+                            android:layout_marginStart="8dp"
+                            android:textSize="20sp"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:background="@drawable/button_rounded"
+                        android:layout_marginStart="16dp"
+                        android:clickable="true"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/qr_scanner_outline"
+                            android:paddingRight="0dp"
+                            android:clickable="true"/>
+
+                        <TextView
+                            android:id="@+id/generateQRbtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:paddingRight="0dp"
+                            android:text="Generate QR"
+                            android:textAlignment="center"
+                            android:textSize="20sp"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
 
         </LinearLayout>
 
-
     </FrameLayout>
 
-</FrameLayout>
+</ScrollView>

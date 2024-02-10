@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="HistoryFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".History.HistoryFragment"
     android:background="@drawable/background">
 
     <!-- TODO: Update blank fragment layout -->
@@ -24,6 +25,8 @@
             android:textColor="@color/white"
             android:paddingTop="20dp"/>
 
+
+
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -34,40 +37,19 @@
                 android:layout_height="wrap_content"
                 android:weightSum="3">
 
-                <TextView
-                    android:id="@+id/pastReservations"
-                    android:layout_width="0dp"
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Past Reservations"
-                    android:textSize="15sp"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:padding="10dp"/>
+                    android:minHeight="?attr/actionBarSize"
+                    android:background="@android:color/transparent"
+                    app:tabTextAppearance="@style/TabLayoutTextStyle"
+                    app:tabIndicatorColor="@color/white"
+                    app:tabIndicatorHeight="3dp"
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabTextColor="@color/white"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-
-                <TextView
-                    android:id="@+id/onGoing"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="OnGoing"
-                    android:textSize="15sp"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:padding="10dp"/>
-
-
-                <TextView
-                    android:id="@+id/canCelled"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Cancelled"
-                    android:textSize="15sp"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:padding="10dp"/>
 
             </TableRow>
 
@@ -116,11 +98,11 @@
                 </LinearLayout>
             </TableRow>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/historyRecyclerView"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingTop="20dp"/>
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
         </TableLayout>
     </LinearLayout>
 </FrameLayout>

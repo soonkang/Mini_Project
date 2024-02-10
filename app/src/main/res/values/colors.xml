@@ -17,4 +17,6 @@
     <color name="red">#FF0000</color>
     <color name="slot_select_start_bg">#0E1918</color>
     <color name="slot_select_end_bg">#101E1D</color>
+    <color name="transparent">#33FFFFFF</color>
+
 </resources>

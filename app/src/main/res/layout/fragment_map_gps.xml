@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- SupportMapFragment -->
     <fragment
@@ -9,9 +10,10 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Map_GPS_Fragment" />
+        tools:context=".GoogleMap.Map_GPS_Fragment" />
 
     <!-- SearchView -->
+
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
@@ -21,6 +23,26 @@
         android:queryHint="Search for a place..."
         android:elevation="10dp"
         android:iconifiedByDefault="false"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:focusable="false"/>
+
+    <ImageView
+        android:id="@+id/speechtoTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mic_off_logo"
+        android:layout_marginLeft="360dp"
+        android:layout_marginTop="510dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/recentre_logo"
+        app:backgroundTint="@android:color/darker_gray"
+        android:id="@+id/recenterButton"
+        android:scaleType="center"/>
 
 </RelativeLayout>

@@ -3,7 +3,13 @@
 
     <item
         android:id="@+id/dots_menu_item_about"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:title="About"/>
+
+    <item
+        android:id="@+id/dots_menu_item_map_view"
+        android:title="Open Map"/>
+
+    <item
+        android:id="@+id/dots_menu_item_favourites"
+        android:title="Favourites"/>
 </menu>

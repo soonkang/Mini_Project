@@ -1,18 +1,21 @@
-package com.sp.mini_assignment;
+package com.sp.mini_assignment.History;
 
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.fragment.app.Fragment;
+import com.sp.mini_assignment.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link StartUpFragment#newInstance} factory method to
+ * Use the {@link PastReservationsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StartUpFragment extends Fragment {
+public class PastReservationsFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,7 +26,7 @@ public class StartUpFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public StartUpFragment() {
+    public PastReservationsFragment() {
         // Required empty public constructor
     }
 
@@ -33,11 +36,11 @@ public class StartUpFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment StartUpFragment.
+     * @return A new instance of fragment PastReservationsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static StartUpFragment newInstance(String param1, String param2) {
-        StartUpFragment fragment = new StartUpFragment();
+    public static PastReservationsFragment newInstance(String param1, String param2) {
+        PastReservationsFragment fragment = new PastReservationsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -58,6 +61,6 @@ public class StartUpFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_start_up, container, false);
+        return inflater.inflate(R.layout.fragment_past_reservations, container, false);
     }
 }
