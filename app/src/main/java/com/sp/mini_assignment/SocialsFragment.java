@@ -30,7 +30,6 @@ public class SocialsFragment extends Fragment {
         twitter = rootView.findViewById(R.id.twitter_icon);
         whatsapp = rootView.findViewById(R.id.whatsapp_icon);
         facebook = rootView.findViewById(R.id.facebook_icon);
-        google = rootView.findViewById(R.id.google_icon);
         allClickListener();
 
         return rootView; // Don't forget to return the rootView

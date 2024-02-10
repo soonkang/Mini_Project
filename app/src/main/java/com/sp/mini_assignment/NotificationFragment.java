@@ -40,8 +40,8 @@ public class NotificationFragment extends Fragment {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), channelId)
                 .setSmallIcon(R.drawable.notification)
-                .setContentTitle("Notification")
-                .setContentText("This is a notification for you")
+                .setContentTitle("ParkSwift Notification")
+                .setContentText("Hey What's Up? This is Forsaken from Paper Rex")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         NotificationManager notificationManager = (NotificationManager) requireContext().getSystemService(Context.NOTIFICATION_SERVICE);
