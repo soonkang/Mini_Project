@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BookSlot.BookedSlotFragment"
+    android:id="@+id/fragment_container_bookedslot"
     android:background="@drawable/home_backdrop">
 
     <ScrollView
@@ -59,6 +60,7 @@
                 android:layout_marginTop="15dp">
 
                 <TextView
+                    android:id="@+id/booked_slot_confirm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Confirm"

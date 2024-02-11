@@ -1,4 +1,4 @@
-package com.sp.mini_assignment;
+package com.sp.mini_assignment.Settings;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.sp.mini_assignment.R;
 
 public class NotificationFragment extends Fragment {
 

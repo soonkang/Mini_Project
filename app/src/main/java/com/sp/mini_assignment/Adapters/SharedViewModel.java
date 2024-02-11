@@ -1,10 +1,10 @@
-package com.sp.mini_assignment;
+package com.sp.mini_assignment.Adapters;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.sp.mini_assignment.CardDetails;
+import com.sp.mini_assignment.Adapters.CardDetails;
 
 public class SharedViewModel extends ViewModel {
 

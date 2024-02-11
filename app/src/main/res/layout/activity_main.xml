@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:openDrawer="">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/home_backdrop"
+            android:background="@drawable/background_2"
             android:focusableInTouchMode="true">
 
             <FrameLayout
@@ -49,6 +49,7 @@
                                 android:src="@drawable/nav" />
 
                             <TextView
+                                android:id="@+id/welcomeText"
                                 android:layout_width="200dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="10dp"
@@ -87,8 +88,7 @@
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:src="@drawable/background_blend" />
+                                android:layout_height="match_parent" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -121,6 +121,7 @@
                                 </LinearLayout>
 
                                 <TextView
+                                    android:id="@+id/HiText"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="30dp"
@@ -339,11 +340,6 @@
 
                                 </androidx.recyclerview.widget.RecyclerView>
 
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/settings_logo_black"/>
-
 
                             </LinearLayout>
 
@@ -373,7 +369,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
                     app:labelVisibilityMode="labeled"
-                    android:background="@android:color/darker_gray"
+                    android:background="@color/white"
                     app:menu="@menu/btm_nav_bar" />
 
             </com.google.android.material.bottomappbar.BottomAppBar>

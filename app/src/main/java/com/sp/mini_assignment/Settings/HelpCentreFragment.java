@@ -1,4 +1,4 @@
-package com.sp.mini_assignment;
+package com.sp.mini_assignment.Settings;
 
 import android.os.Bundle;
 import androidx.appcompat.widget.SearchView;
@@ -12,7 +12,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class HelpPageFragment extends Fragment {
+import com.sp.mini_assignment.Adapters.HelpListAdapter;
+import com.sp.mini_assignment.R;
+
+public class HelpCentreFragment extends Fragment {
 
     SearchView searchBar;
     ListView helpList;

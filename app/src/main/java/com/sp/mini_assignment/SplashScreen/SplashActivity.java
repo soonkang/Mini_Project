@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.sp.mini_assignment.Home.Main;
 import com.sp.mini_assignment.R;
+import com.sp.mini_assignment.StartUp.StartUpFragment;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -47,9 +48,9 @@ public class SplashActivity extends AppCompatActivity {
                     // Stop playing the background music
                     stopBackgroundMusic();
 
-                    Intent mainIntent = new Intent(SplashActivity.this, Main.class);
-                    startActivity(mainIntent);
-                    finish();
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(android.R.id.content, new StartUpFragment())
+                            .commit();
                 }, 3000); // 3000 milliseconds = 3 seconds
             }
 

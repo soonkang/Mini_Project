@@ -1,4 +1,4 @@
-package com.sp.mini_assignment;
+package com.sp.mini_assignment.Settings;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.sp.mini_assignment.R;
 
 /**
  * A simple {@link Fragment} subclass.

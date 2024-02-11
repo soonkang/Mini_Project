@@ -17,11 +17,11 @@ import android.widget.TextView;
 
 import com.sp.mini_assignment.Adapters.BookedSlotAdapter;
 import com.sp.mini_assignment.Adapters.Carpark;
+import com.sp.mini_assignment.Payment.PaymentFragment;
 import com.sp.mini_assignment.R;
 
 import java.util.List;
 import java.util.Locale;
-import java.util.Timer;
 
 public class BookedSlotFragment extends Fragment {
 
@@ -31,9 +31,10 @@ public class BookedSlotFragment extends Fragment {
 
     Carpark carpark;
 
-    TextView countdownTimer;
+    TextView countdownTimer, confirm;
 
     CountDownTimer timer;
+
     private List<Carpark> carparkList;
 
     public BookedSlotFragment() {
@@ -48,7 +49,14 @@ public class BookedSlotFragment extends Fragment {
         bookedSlotRecyclerView = rootView.findViewById(R.id.booked_slot_recyclerview);
         bookedSlotRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         countdownTimer = rootView.findViewById(R.id.confirm_timer);
+        confirm = rootView.findViewById(R.id.booked_slot_confirm);
 
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new PaymentFragment());
+            }
+        });
         Bundle bundle = getArguments();
         if (bundle != null) {
             carpark = bundle.getParcelable("carpark");
@@ -95,5 +103,14 @@ public class BookedSlotFragment extends Fragment {
 
 
             }.start();
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container_bookedslot, fragment);
+        fragmentTransaction.addToBackStack(null);
+
+        fragmentTransaction.commit();
     }
 }

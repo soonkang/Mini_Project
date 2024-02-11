@@ -1,4 +1,4 @@
-package com.sp.mini_assignment;
+package com.sp.mini_assignment.Adapters;
 
 public class Comment {
     private String username;

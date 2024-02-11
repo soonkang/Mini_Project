@@ -1,4 +1,4 @@
-    package com.sp.mini_assignment;
+    package com.sp.mini_assignment.Settings;
 
     import android.os.Bundle;
     import android.view.KeyEvent;
@@ -8,6 +8,11 @@
     import android.widget.EditText;
     import android.widget.ListView;
     import androidx.fragment.app.Fragment;
+
+    import com.sp.mini_assignment.Adapters.Comment;
+    import com.sp.mini_assignment.Adapters.CommentAdapter;
+    import com.sp.mini_assignment.R;
+
     import java.util.ArrayList;
 
     public class ForumFragment extends Fragment {

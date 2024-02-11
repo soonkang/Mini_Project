@@ -1,4 +1,4 @@
-package com.sp.mini_assignment;
+package com.sp.mini_assignment.Settings;
 
 
 import android.widget.Toast;
@@ -12,6 +12,8 @@ import android.widget.RatingBar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.sp.mini_assignment.R;
 
 public class CommunityForumFragment extends Fragment {
 

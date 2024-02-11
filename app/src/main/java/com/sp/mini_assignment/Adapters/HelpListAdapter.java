@@ -1,4 +1,4 @@
-package com.sp.mini_assignment;
+package com.sp.mini_assignment.Adapters;
 
 
 // CustomListAdapter.java
@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.sp.mini_assignment.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Fragment_payment">
+    tools:context=".Payment.PaymentFragment">
 
     <TextView
         android:id="@+id/textView17"
@@ -72,10 +72,10 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/backtohome"
         android:layout_width="167dp"
         android:layout_height="49dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="80dp"
         android:text="HOME"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

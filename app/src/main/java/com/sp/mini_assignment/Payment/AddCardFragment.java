@@ -1,4 +1,4 @@
-package com.sp.mini_assignment;
+package com.sp.mini_assignment.Payment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,17 +13,22 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.gson.Gson;
+import com.sp.mini_assignment.Adapters.CardDetails;
+import com.sp.mini_assignment.R;
+import com.sp.mini_assignment.Adapters.SharedViewModel;
 
-public class Fragment_Add_Card extends Fragment {
+public class AddCardFragment extends Fragment {
 
     private EditText editCardNumber, editExpirationDate, editCvv;
     private Button btnSave;
     private RelativeLayout cardLayout;
 
-    public Fragment_Add_Card() {
+    public AddCardFragment() {
         // Required empty public constructor
     }
 
@@ -56,6 +61,7 @@ public class Fragment_Add_Card extends Fragment {
 
                 // Navigate to Fragment_payment or perform other actions
 //                ((Main) requireActivity()).switchToFragmentPayment(cardDetails.toString()); // Assuming cardDetails has a useful toString() method
+                replaceFragment(new PaymentFragment());
             }
         });
 
@@ -81,5 +87,14 @@ public class Fragment_Add_Card extends Fragment {
         sharedViewModel.setCardDetails(cardDetails);
 
         Log.d("Fragment_Add_Card", "Card details set in ViewModel");
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container_addcard, fragment);
+        fragmentTransaction.addToBackStack(null);
+
+        fragmentTransaction.commit();
     }
 }

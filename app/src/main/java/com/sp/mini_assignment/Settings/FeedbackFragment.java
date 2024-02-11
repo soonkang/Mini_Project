@@ -1,4 +1,4 @@
-package com.sp.mini_assignment;
+package com.sp.mini_assignment.Settings;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -17,9 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+import com.sp.mini_assignment.R;
 
 
-public class Fragment_fedback extends Fragment {
+public class FeedbackFragment extends Fragment {
 
     EditText Name, Email, comment;
     TextView ratingError;

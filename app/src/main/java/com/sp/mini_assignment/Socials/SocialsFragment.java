@@ -1,4 +1,4 @@
-package com.sp.mini_assignment;
+package com.sp.mini_assignment.Socials;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+
+import com.sp.mini_assignment.R;
 
 public class SocialsFragment extends Fragment {
 
@@ -30,6 +32,7 @@ public class SocialsFragment extends Fragment {
         twitter = rootView.findViewById(R.id.twitter_icon);
         whatsapp = rootView.findViewById(R.id.whatsapp_icon);
         facebook = rootView.findViewById(R.id.facebook_icon);
+        google = rootView.findViewById(R.id.google_icon);
         allClickListener();
 
         return rootView; // Don't forget to return the rootView

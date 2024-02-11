@@ -1,4 +1,4 @@
-package com.sp.mini_assignment;
+package com.sp.mini_assignment.Payment;
 
 import android.app.Activity;
 import android.app.NotificationChannel;
@@ -11,6 +11,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,13 +26,14 @@ import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
+import com.sp.mini_assignment.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.math.BigDecimal;
 
-public class Fragment_Paypal extends Fragment {
+public class PaypalFragment extends Fragment {
 
     EditText editAmount;
     Button btnPayment;
@@ -66,6 +69,8 @@ public class Fragment_Paypal extends Fragment {
                 NotificationManager notificationManager = (NotificationManager)
                         requireActivity().getSystemService(Context.NOTIFICATION_SERVICE);
                 notificationManager.notify(0, mbuilder.build());
+
+
             }
         });
 
@@ -127,5 +132,13 @@ public class Fragment_Paypal extends Fragment {
             NotificationManager notificationManager = requireActivity().getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }

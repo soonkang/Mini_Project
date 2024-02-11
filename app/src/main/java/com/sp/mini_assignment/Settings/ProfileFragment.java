@@ -1,4 +1,4 @@
-package com.sp.mini_assignment;
+package com.sp.mini_assignment.Settings;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,7 +8,6 @@ import android.os.Bundle;
 
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -20,13 +19,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.sp.mini_assignment.R;
 
 import java.io.File;
 
 
-public class fragment_profile extends Fragment {
+public class ProfileFragment extends Fragment {
 
     private ImageView placeImage;
     private static final int PICK_IMAGE_REQUEST = 1;
@@ -35,12 +34,12 @@ public class fragment_profile extends Fragment {
     Button send;
     Firebase firebase;
 
-    public fragment_profile() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 
-    public static fragment_profile newInstance(String param1, String param2) {
-        return new fragment_profile();
+    public static ProfileFragment newInstance(String param1, String param2) {
+        return new ProfileFragment();
     }
 
     @Override

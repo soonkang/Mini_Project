@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Settings.SettingsFragment"
+    android:id="@+id/fragment_container_settings"
     android:background="@drawable/background_blend">
 
     <LinearLayout
@@ -93,6 +94,7 @@
                             android:src="@drawable/profile_logo" />
 
                         <TextView
+                            android:id="@+id/settings_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
@@ -125,6 +127,7 @@
                             android:src="@drawable/phone_logo" />
 
                         <TextView
+                            android:id="@+id/settings_telNo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
@@ -229,6 +232,7 @@
                             android:layout_marginTop="10dp"/>
 
                         <TextView
+                            android:id="@+id/settings_notifications"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
@@ -260,6 +264,7 @@
                             android:layout_marginLeft="55dp"/>
 
                         <TextView
+                            android:id="@+id/settings_community"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
@@ -267,7 +272,7 @@
                             android:textSize="25dp"
                             android:layout_marginLeft="130dp"
                             android:layout_marginTop="30dp"
-                            android:text="Communications"/>
+                            android:text="Community"/>
                     </FrameLayout>
 
                     
@@ -290,6 +295,7 @@
                             android:layout_marginLeft="55dp"/>
 
                         <TextView
+                            android:id="@+id/settings_bookedslot"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
@@ -311,35 +317,6 @@
                             android:layout_marginLeft="50dp"
                             android:layout_marginTop="10dp"
                             android:src="@drawable/settings_row_background" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/history_logo"
-                            android:layout_marginLeft="55dp"
-                            android:layout_marginTop="20dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
-                            android:textSize="25dp"
-                            android:layout_marginLeft="130dp"
-                            android:layout_marginTop="30dp"
-                            android:text="History"/>
-                    </FrameLayout>
-                    
-                    <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:layout_width="315dp"
-                            android:layout_height="80dp"
-                            android:layout_marginLeft="50dp"
-                            android:layout_marginTop="10dp"
-                            android:src="@drawable/settings_row_background" />
                         
                         <ImageView
                             android:layout_width="wrap_content"
@@ -349,6 +326,7 @@
                             android:layout_marginLeft="55dp"/>
 
                         <TextView
+                            android:id="@+id/settings_feedback"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
@@ -381,6 +359,7 @@
                             android:layout_marginLeft="55dp"/>
 
                         <TextView
+                            android:id="@+id/settings_points"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
@@ -412,6 +391,7 @@
                             android:layout_marginTop="20dp"/>
 
                         <TextView
+                            android:id="@+id/settings_subscriptions"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
@@ -481,6 +461,7 @@
                     android:layout_marginTop="520dp"/>
 
                 <TextView
+                    android:id="@+id/settings_deactivate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Deactivate"

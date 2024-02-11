@@ -1,4 +1,4 @@
-package com.sp.mini_assignment;
+package com.sp.mini_assignment.LoginSignup;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,14 +6,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.sp.mini_assignment.Home.Main;
+import com.sp.mini_assignment.R;
 
 import java.util.Objects;
 
@@ -56,8 +56,7 @@ public class LoginFragment extends Fragment {
         signupRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(requireContext(), SignUpFragment.class);
-                startActivity(intent);
+                navigateToSignUpFragment();
             }
         });
         return rootView;
@@ -89,7 +88,8 @@ public class LoginFragment extends Fragment {
         String userUsername = loginUsername.getText().toString().trim();
         String userPassword = loginPassword.getText().toString().trim();
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://mini-assignment-signup-login-default-rtdb.firebaseio.com/");
+        DatabaseReference reference =database.getReference("users");
         Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
 
         checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -99,9 +99,9 @@ public class LoginFragment extends Fragment {
                     loginUsername.setError(null);
                     String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
 
-                    if(!Objects.equals(passwordFromDB, userPassword)) {
+                    if(Objects.equals(passwordFromDB, userPassword)) {
                         loginUsername.setError(null);
-                        Intent intent = new Intent(requireContext(),Main.class);
+                        Intent intent = new Intent(requireContext(), Main.class);
                         startActivity(intent);
                     } else {
                         loginPassword.setError("Invalid Username or Password");
@@ -121,5 +121,15 @@ public class LoginFragment extends Fragment {
         });
     }
 
+    private void navigateToSignUpFragment() {
+        // Create an instance of the LoginFragment
+        SignUpFragment signUpFragment = new SignUpFragment();
+
+        // Navigate to the LoginFragment
+        getParentFragmentManager().beginTransaction()
+                .replace(android.R.id.content, signUpFragment)
+                .addToBackStack(null) // Optional: Add to back stack to allow back navigation
+                .commit();
+    }
 
 }

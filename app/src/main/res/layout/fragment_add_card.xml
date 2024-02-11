@@ -6,7 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Fragment_payment">
+    tools:context=".Payment.PaymentFragment">
+
+
+
 
     <TextView
         android:id="@+id/textView8"
@@ -135,6 +138,14 @@
             android:text="Terms and Conditions"
             android:textColor="#07B2FF" />
 
+
+
+
     </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_container_addcard"></FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

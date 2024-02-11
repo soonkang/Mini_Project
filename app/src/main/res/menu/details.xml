@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/dots_menu_item_about"
-        android:title="About"/>
+        android:id="@+id/dots_menu_item_socials"
+        android:title="Socials"/>
 
     <item
         android:id="@+id/dots_menu_item_map_view"

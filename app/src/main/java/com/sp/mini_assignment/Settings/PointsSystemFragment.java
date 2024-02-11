@@ -1,4 +1,4 @@
-package com.sp.mini_assignment;
+package com.sp.mini_assignment.Settings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,8 +17,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.sp.mini_assignment.R;
 
-public class Fragment_Point_System extends Fragment {
+public class PointsSystemFragment extends Fragment {
 
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
