@@ -32,7 +32,7 @@ public class favouriteCarparkHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
             KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             ITEM_TITLE + " TEXT," +
-            ITEM_IMAGE + " BLOB," +
+            ITEM_IMAGE + " TEXT," +
             FAVOURITE_STATUS + " TEXT)";
 
     public favouriteCarparkHelper(Context context) {
@@ -50,17 +50,28 @@ public class favouriteCarparkHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+
+
     public void insertIntoTheDatabase(String item_title, String item_image_url, String fav_status) {
-        new ImageDownloaderTask(item_title, item_image_url, fav_status).execute();
+        ContentValues cv = new ContentValues();
+        cv.put(ITEM_TITLE, item_title);
+        cv.put(ITEM_IMAGE, item_image_url); // Store the image URL as a string
+        cv.put(FAVOURITE_STATUS, fav_status);
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.insert(TABLE_NAME, null, cv);
     }
 
     public List<Carpark> readAllData(int limit) {
         List<Carpark> carparkList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " LIMIT " + limit, null);
+
+
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + FAVOURITE_STATUS + "=?";
+        String[] parameters = new String[]{"1"};
+
+        Cursor cursor = db.rawQuery(query, parameters);
 
         Log.d("Cursor Size", "Cursor size: " + cursor.getCount());
-
 
         if (cursor.moveToFirst()) {
             int keyIdIndex = cursor.getColumnIndex(KEY_ID);
@@ -85,15 +96,20 @@ public class favouriteCarparkHelper extends SQLiteOpenHelper {
         return carparkList;
     }
 
-    public void removeFav(int id) {
+    public void removeFav(Carpark carpark) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME, KEY_ID + "=?", new String[]{String.valueOf(id)});
+        db.delete(TABLE_NAME, KEY_ID + "=?", new String[]{String.valueOf(carpark.getKey_id())});
+        Log.d("favouriteCarparkHelper", "Removed item with ID: " + carpark.getKey_id());
+
+
+
     }
 
     public void deleteAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_NAME, null, null);
     }
+
 
     public void close() {
 
@@ -147,4 +163,6 @@ public class favouriteCarparkHelper extends SQLiteOpenHelper {
             }
         }
     }
+
+
 }

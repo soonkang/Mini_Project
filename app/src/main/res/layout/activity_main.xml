@@ -336,7 +336,8 @@
                                     android:id="@+id/nearestCarparks"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp">
+                                    android:layout_marginTop="10dp"
+                                    android:paddingBottom="50dp">
 
                                 </androidx.recyclerview.widget.RecyclerView>
 

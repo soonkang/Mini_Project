@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -39,6 +40,7 @@ import com.sp.mini_assignment.About.AboutFragment;
 import com.sp.mini_assignment.Adapters.CarparkAdapter;
 import com.sp.mini_assignment.Adapters.Carpark;
 import com.sp.mini_assignment.FavouriteCarpark.FavouriteCarpark;
+import com.sp.mini_assignment.Interfaces.OnDirectionsClickListener;
 import com.sp.mini_assignment.Settings.HelpCentreFragment;
 import com.sp.mini_assignment.History.HistoryFragment;
 import com.sp.mini_assignment.GoogleMap.Map_GPS_Fragment;
@@ -60,7 +62,7 @@ import com.sp.mini_assignment.Adapters.favouriteCarparkHelper;
 import com.sp.mini_assignment.Socials.SocialsFragment;
 
 
-public class Main extends AppCompatActivity implements OnItemClickListener{
+public class Main extends AppCompatActivity implements OnItemClickListener, OnDirectionsClickListener {
 
 
     private static final int MENU_ITEM_SETTING = R.id.nav_setting;
@@ -136,6 +138,7 @@ public class Main extends AppCompatActivity implements OnItemClickListener{
         nearestCarparks.setAdapter(carparkAdapter);
 
         carparkAdapter.setOnItemClickListener(this);
+        carparkAdapter.setDirectionsClickListener(this);
 
 
         searchResultsAdapter = new SearchResultsAdapter(searchResultsList, carparkList, this);
@@ -239,7 +242,7 @@ public class Main extends AppCompatActivity implements OnItemClickListener{
                 String carparkPrice = dataSnapshot.child("carparkPrice").getValue(String.class);
 
                 // Create a Carpark object using the retrieved data
-                Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0",1);
+                Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0",1,  "half", 1.3798, 103.9597);
                 // Add the carpark object to the list
                 carparkList.add(carpark);
                 Log.d("FirebaseData", "carparkName: " + carparkName + ", carparkDistance: " + carparkDistance + ", carparkImage: " + carparkImage);
@@ -285,7 +288,7 @@ public class Main extends AppCompatActivity implements OnItemClickListener{
                 String carparkPrice = dataSnapshot.child("carparkPrice").getValue(String.class);
 
                 // Create a Carpark object using the retrieved data
-                Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0", 2);
+                Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0", 2, "empty", 1.3350, 103.7468);
                 // Checking if Image is  passed as URL
                 String carparkUrl  = carpark.getCarparkImage();
                 Log.d("carparkURL" , carparkUrl);
@@ -332,7 +335,7 @@ public class Main extends AppCompatActivity implements OnItemClickListener{
                 String carparkPrice = dataSnapshot.child("carparkPrice").getValue(String.class);
 
                 // Create a Carpark object using the retrieved data
-                Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0", 2);
+                Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0", 3, "full", 1.452684,  103.81693);
                 // Checking if Image is  passed as URL
                 String carparkUrl  = carpark.getCarparkImage();
                 Log.d("carparkURL" , carparkUrl);
@@ -379,7 +382,7 @@ public class Main extends AppCompatActivity implements OnItemClickListener{
                 String carparkPrice = dataSnapshot.child("carparkPrice").getValue(String.class);
 
                 // Create a Carpark object using the retrieved data
-                Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0", 2);
+                Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0", 4, "empty", 1.21968, 103.564246);
                 // Checking if Image is  passed as URL
                 String carparkUrl  = carpark.getCarparkImage();
                 Log.d("carparkURL" , carparkUrl);
@@ -426,7 +429,7 @@ public class Main extends AppCompatActivity implements OnItemClickListener{
                 String carparkPrice = dataSnapshot.child("carparkPrice").getValue(String.class);
 
                 // Create a Carpark object using the retrieved data
-                Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0", 2);
+                Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0", 5, "half", 1.3630, 103.8476);
                 // Checking if Image is  passed as URL
                 String carparkUrl  = carpark.getCarparkImage();
                 Log.d("carparkURL" , carparkUrl);
@@ -548,8 +551,8 @@ public class Main extends AppCompatActivity implements OnItemClickListener{
 
                         if(itemId == R.id.dots_menu_item_favourites)
                         {
-                            FavouriteCarpark fragment = new FavouriteCarpark(favouriteCarparkHelper );
-                            replaceFragment(fragment, false);
+                            FavouriteCarpark fragment = new FavouriteCarpark(favouriteCarparkHelper);
+                            replaceFragment(fragment, true);
                             return true;
                         }
                         return false;
@@ -577,7 +580,7 @@ public class Main extends AppCompatActivity implements OnItemClickListener{
 
 
                 if (itemId == MENU_ITEM_SETTING) {
-                    replaceFragment(new SettingsFragment(), false);
+                    replaceFragment(new SettingsFragment(), true);
                     drawerLayout.closeDrawer(navigationView);
                     btmNavigationView.getMenu().findItem(btmNavigationView.getSelectedItemId()).setChecked(false);
 
@@ -586,7 +589,7 @@ public class Main extends AppCompatActivity implements OnItemClickListener{
                     return true;
 
                 } else if (itemId == MENU_ITEM_ABOUT) {
-                    replaceFragment(new AboutFragment(), false);
+                    replaceFragment(new AboutFragment(), true);
                     drawerLayout.closeDrawer(navigationView);
                     return true;
 
@@ -602,7 +605,7 @@ public class Main extends AppCompatActivity implements OnItemClickListener{
 
 
                 } else if (itemId == MENU_ITEM_PROFILE) {
-                    replaceFragment(new ProfileFragment(), false);
+                    replaceFragment(new ProfileFragment(), true);
                     drawerLayout.closeDrawer(navigationView);
                     return true;
 
@@ -685,6 +688,14 @@ public class Main extends AppCompatActivity implements OnItemClickListener{
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onDirectionsClick(int position) {
+        Carpark clickedCarpark = carparkList.get(position);
+        Intent intent = new Intent(Main.this, Map_GPS_Fragment.class);
+        intent.putExtra("carpark_location", new LatLng(clickedCarpark.getLatitude(), clickedCarpark.getLongitude()));
+        startActivity(intent);
     }
 
 

@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,6 +32,7 @@ public class FavouriteCarpark extends Fragment {
 
     public FavouriteCarpark(favouriteCarparkHelper helper) {
         this.helper = helper;
+
     }
 
 
@@ -45,18 +47,22 @@ public class FavouriteCarpark extends Fragment {
         favCarparkRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
 
-        favouriteCarparks = helper.readAllData(10);
 
-        Log.d("Favourite Carparks", "Favourite carparks size: " + favouriteCarparks.size());
+        favouriteCarparks = helper.readAllData(30);
 
-        if (favouriteCarparks.isEmpty()) {
-            // Handle the case when no favourite carparks are found
-        } else {
+
+
+        if (!favouriteCarparks.isEmpty()) {
             favouriteCarparkAdapter = new FavouriteCarparkAdapter(requireContext());
             favouriteCarparkAdapter.setCarparkList(favouriteCarparks);
             favCarparkRecyclerView.setAdapter(favouriteCarparkAdapter);
-        }
 
+
+        } else {
+            // Handle the case when no favourite carparks are found
+            // For example, display a message to the user
+            Toast.makeText(requireContext(), "No favorite carparks found.", Toast.LENGTH_SHORT).show();
+        }
         return rootView;
     }
     @Override
@@ -65,6 +71,18 @@ public class FavouriteCarpark extends Fragment {
         if (helper != null) {
             helper.close(); // Close the database connection when the fragment is destroyed
         }
+    }
+
+    public void refreshData() {
+        favouriteCarparks = helper.readAllData(30);
+        favouriteCarparkAdapter.setCarparkList(favouriteCarparks);
+        favouriteCarparkAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        refreshData();
     }
 
 

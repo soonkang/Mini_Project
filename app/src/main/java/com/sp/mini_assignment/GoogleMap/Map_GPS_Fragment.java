@@ -40,6 +40,7 @@ import com.google.android.libraries.places.api.net.FetchPlaceRequest;
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.sp.mini_assignment.Adapters.Carpark;
 import com.sp.mini_assignment.R;
 import com.sp.mini_assignment.databinding.FragmentMapGpsBinding;
 
@@ -99,6 +100,26 @@ public class Map_GPS_Fragment extends FragmentActivity implements OnMapReadyCall
 
         speechTotxt = findViewById(R.id.speechtoTxt);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+
+        // Get the Intent that started this activity
+        Intent intent = getIntent();
+
+        // Get the Bundle containing the extras
+        Bundle bundle = intent.getExtras();
+
+        // Get the Latitude and Longitude values from the Bundle
+        if (bundle != null) {
+            double latitude = bundle.getDouble("latitude");
+            double longitude = bundle.getDouble("longitude");
+
+            // Use the Latitude and Longitude values to add a marker to the map
+            LatLng location = new LatLng(latitude, longitude);
+            mMap.addMarker(new MarkerOptions().position(location).title("Destination"));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 15f));
+        }
+
+
 
         // Check for location permission
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -409,4 +430,5 @@ public class Map_GPS_Fragment extends FragmentActivity implements OnMapReadyCall
         super.onResume();
         getLastLocation();
     }
+
 }

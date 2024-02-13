@@ -21,10 +21,15 @@ public class Carpark implements Parcelable {
 
     public String favStatus;
 
+    public String carparkCapacity;
+
+    public Double latitude, longitude;
+
+
     public  int key_id;
 
     // Constructor
-    public Carpark(String carparkImage, String carparkName, String carparkDistance, String carparkSlot, String carparkDate, String carparkPrice, String favStatus, int key_id) {
+    public Carpark(String carparkImage, String carparkName, String carparkDistance, String carparkSlot, String carparkDate, String carparkPrice, String favStatus, int key_id, String carparkCapacity, Double Latitude, Double Longitude) {
         this.carparkImage = carparkImage;
         this.carparkName = carparkName;
         this.carparkPrice = carparkPrice;
@@ -33,6 +38,9 @@ public class Carpark implements Parcelable {
         this.carparkLevel = carparkSlot;
         this.favStatus = favStatus;
         this.key_id = key_id;
+        this.carparkCapacity = carparkCapacity;
+        this.latitude = Latitude;
+        this.longitude = Longitude;
     }
 
     public Carpark() {
@@ -83,6 +91,17 @@ public class Carpark implements Parcelable {
         this.carparkImage = carparkImage;
     }
 
+    public String getCarparkCapacity() { return carparkCapacity;}
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+
 
     @Override
     public int describeContents() {
@@ -111,6 +130,10 @@ public class Carpark implements Parcelable {
     public void setKey_id(int key_id) {
         this.key_id = key_id;
 
+    }
+
+    public int getKey_id() {
+        return  key_id;
     }
 
     public void setCarparkName(String carparkName) {
