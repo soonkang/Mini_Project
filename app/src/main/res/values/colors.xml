@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="green">#34DD5A</color>
+    <color name="background_color">#356660</color>
+    <color name="home_backdrop_color">#586E6B</color>
+    <color name="home_background">#558983</color>
+    <color name="select_logo_color">#A975FF</color>
+    <color name="grey">#7F7F7F</color>
+    <color name="confirm_btn_bg_color">#1ECD9F</color>
+    <color name="red">#FF0000</color>
+    <color name="slot_select_start_bg">#0E1918</color>
+    <color name="slot_select_end_bg">#101E1D</color>
+    <color name="blue">#07B2FF</color>
 </resources>

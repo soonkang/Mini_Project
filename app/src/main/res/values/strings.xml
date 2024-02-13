@@ -2,4 +2,7 @@
     <string name="app_name">Mini_Assignment</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="open">Open Navigation Drawer</string>
+    <string name="close">Close Navigation Drawer</string>
+    <string name="title_activity_map_gps_fragment">Map_GPS_Fragment</string>
 </resources>

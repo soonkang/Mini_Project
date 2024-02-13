@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_profile"
+    tools:context=".Settings.ProfileFragment"
     android:background="#ececec">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="800dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="117dp">
 
@@ -37,7 +37,7 @@
                     android:id="@+id/place_image"
                     android:layout_width="219dp"
                     android:layout_height="206dp"
-                    android:src="@drawable/profile"
+                    android:src="@drawable/profile_icon"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView2"
                     app:layout_constraintEnd_toEndOf="@+id/imageView2"
                     app:layout_constraintHorizontal_bias="0.495"
@@ -169,7 +169,7 @@
                         android:layout_width="370dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="40dp"
+                        android:layout_marginTop="0dp"
                         android:layout_marginEnd="20dp"
                         android:layout_marginBottom="30dp"
                         android:background="@drawable/btn_background"

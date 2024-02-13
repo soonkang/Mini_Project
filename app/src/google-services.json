@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "986149976070",
+    "project_id": "carparks-ddecb",
+    "storage_bucket": "carparks-ddecb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986149976070:android:715a5e06725361d34deb87",
+        "android_client_info": {
+          "package_name": "com.sp.mini_assignment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBSJxc8xgpbe1GT9V_a0v0TbSEuRL0QDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

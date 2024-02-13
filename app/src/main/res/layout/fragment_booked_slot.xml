@@ -1,0 +1,100 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookSlot.BookedSlotFragment"
+    android:id="@+id/fragment_container_bookedslot"
+    android:background="@drawable/home_backdrop">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Book Slot"
+                android:textSize="50dp"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginTop="17dp"
+                android:layout_marginBottom="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+
+
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:layout_width="420dp"
+                    android:layout_height="400dp"
+                    android:src="@drawable/background_blend"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:id="@+id/booked_slot_recyclerview"/>
+
+
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="215dp"
+                android:layout_height="60dp"
+                android:background="@drawable/confirm_btn_background"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/booked_slot_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Confirm"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="25dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/timer_logo"
+                    android:layout_marginLeft="110dp"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:id="@+id/confirm_timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2m 34s"
+                    android:paddingLeft="50dp"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textStyle="bold"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="110dp"/>
+
+            </FrameLayout>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</FrameLayout>
