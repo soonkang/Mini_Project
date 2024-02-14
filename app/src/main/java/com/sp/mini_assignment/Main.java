@@ -20,7 +20,7 @@ public class Main extends AppCompatActivity {
         Log.d("Main", "Switching to Fragment_feedback");
 
         // Create an instance of Fragment_feedback
-        Fragment_fedback fragmentFeedback = new Fragment_fedback();
+        Fragment_fedback fragmentFeedback = new Fragment_feedback();
 
         // Pass card details to Fragment_feedback using Bundle
         Bundle bundle = new Bundle();
