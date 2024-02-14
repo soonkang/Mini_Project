@@ -121,7 +121,6 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        ((OnLoginSuccessListener) requireActivity()).onLoginSuccess(userUsername);
 
     }
 
