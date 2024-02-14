@@ -47,7 +47,6 @@ public class PaypalFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment__paypal, container, false);
 
-        editAmount = view.findViewById(R.id.editAmount);
         btnPayment = view.findViewById(R.id.btnPayment);
         configuration = new PayPalConfiguration().environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
                 .clientId(clientID);
@@ -78,7 +77,7 @@ public class PaypalFragment extends Fragment {
     }
 
     private void getPayment() {
-        String amounts = editAmount.getText().toString();
+        String amounts = "10";
         PayPalPayment payment = new PayPalPayment(new BigDecimal(amounts), "SGD", "Total Amount",
                 PayPalPayment.PAYMENT_INTENT_SALE);
 

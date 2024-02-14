@@ -8,12 +8,13 @@
     android:background="@drawable/background"
     tools:context=".Payment.PaymentFragment">
 
+
     <FrameLayout
+        android:id="@+id/fragment_container_paypal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fragment_container_paypal">
-    </FrameLayout>
-
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="139dp"></FrameLayout>
 
     <ImageView
         android:id="@+id/imageView17"
@@ -28,40 +29,42 @@
 
     <TextView
         android:id="@+id/textView37"
-        android:layout_width="187dp"
-        android:layout_height="38dp"
+        android:layout_width="114dp"
+        android:layout_height="44dp"
         android:layout_marginTop="8dp"
         android:text="Amount :"
         android:textColor="#FAF4F4"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnPayment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.116"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView17" />
 
-    <EditText
-        android:id="@+id/editAmount"
-        android:layout_width="339dp"
-        android:layout_height="52dp"
-        android:ems="10"
-        android:inputType="text"
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="111dp"
+        android:layout_height="47dp"
+        android:text="$10"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="24sp"
+        android:textStyle="italic"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnPayment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.361"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView37" />
+        app:layout_constraintStart_toEndOf="@+id/textView37"
+        app:layout_constraintTop_toBottomOf="@+id/imageView17" />
 
     <Button
         android:id="@+id/btnPayment"
         android:layout_width="150dp"
         android:layout_height="64dp"
-        android:layout_marginTop="28dp"
         android:text="Pay"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_container_paypal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editAmount" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView17" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
