@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.sp.mini_assignment.Home.Main;
+import com.sp.mini_assignment.Interfaces.OnLoginSuccessListener;
 import com.sp.mini_assignment.R;
 
 import java.util.Objects;
@@ -88,7 +89,7 @@ public class LoginFragment extends Fragment {
         String userUsername = loginUsername.getText().toString().trim();
         String userPassword = loginPassword.getText().toString().trim();
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance("https://mini-assignment-signup-login-default-rtdb.firebaseio.com/");
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://carparks-ddecb-default-rtdb.asia-southeast1.firebasedatabase.app/");
         DatabaseReference reference =database.getReference("users");
         Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
 
@@ -119,6 +120,9 @@ public class LoginFragment extends Fragment {
 
             }
         });
+
+        ((OnLoginSuccessListener) requireActivity()).onLoginSuccess(userUsername);
+
     }
 
     private void navigateToSignUpFragment() {
@@ -131,5 +135,8 @@ public class LoginFragment extends Fragment {
                 .addToBackStack(null) // Optional: Add to back stack to allow back navigation
                 .commit();
     }
+
+
+
 
 }

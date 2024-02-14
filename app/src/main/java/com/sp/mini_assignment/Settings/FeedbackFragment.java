@@ -1,6 +1,8 @@
 package com.sp.mini_assignment.Settings;
 
 import android.app.AlertDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -51,6 +53,11 @@ public class FeedbackFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 sendDataToFirebase();
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                String uriText = "mailto:" + Uri.encode("soonkangt@gmail.com") + "?subject=" + Uri.encode("Feedback") + "$body=" + Uri.encode("");
+                Uri uri = Uri.parse(uriText);
+                intent.setData(uri);
+                startActivity(Intent.createChooser(intent, "send emai;"));
             }
         });
 
@@ -63,60 +70,63 @@ public class FeedbackFragment extends Fragment {
         String message = comment.getText().toString();
         float rate = rating.getRating();
 
+        boolean isValid = true;
+
         Firebase child_name = firebase.child("Name");
-        child_name.setValue(name);
         if (name.isEmpty()) {
-            Name.setError("This is skrequired field");
-            send.setEnabled(false);
+            Name.setError("This is a required field");
+            isValid = false;
         } else {
             Name.setError(null);
-            send.setEnabled(true);
         }
 
         Firebase child_email = firebase.child("Email");
-        child_email.setValue(email);
         if (email.isEmpty()) {
             Email.setError("This is required field");
-            send.setEnabled(false);
+            isValid = false;
         } else {
             Email.setError(null);
-            send.setEnabled(true);
         }
 
         Firebase child_message = firebase.child("Comments");
-        child_message.setValue(message);
         if (message.isEmpty()) {
             comment.setError("This is required field");
-            send.setEnabled(false);
+            isValid = false;
         } else {
             comment.setError(null);
-            send.setEnabled(true);
         }
 
         Firebase child_rate = firebase.child("Rate");
-        child_rate.setValue(rate);
         if (rate == 0) {
             ratingError.setText("This is a required field");
-            send.setEnabled(false);
+            isValid = false;
         } else {
             ratingError.setText(null);
-            send.setEnabled(true);
         }
 
-        Toast.makeText(requireContext(), "Your data was sent to the server", Toast.LENGTH_SHORT).show();
+        if (isValid) {
+            child_name.setValue(name);
+            child_email.setValue(email);
+            child_message.setValue(message);
+            child_rate.setValue(rate);
 
-        details.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDetailsDialog(name, email, message);
-            }
-        });
-        Fragment_fedback_submitted fragmentSubmitted = new Fragment_fedback_submitted();
-        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragmentSubmitted);
-        transaction.addToBackStack(null);  // Add the transaction to the back stack
-        transaction.commit();
+            Toast.makeText(requireContext(), "Your data was sent to the server", Toast.LENGTH_SHORT).show();
+
+            details.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showDetailsDialog(name, email, message);
+                }
+            });
+            Fragment_fedback_submitted fragmentSubmitted = new Fragment_fedback_submitted();
+            FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, fragmentSubmitted);
+            transaction.addToBackStack(null);  // Add the transaction to the back stack
+            transaction.commit();
+        }
     }
+
+
 
     private void showDetailsDialog(String name, String email, String message) {
         new AlertDialog.Builder(requireContext())

@@ -48,16 +48,42 @@
                                 android:scaleType="fitStart"
                                 android:src="@drawable/nav" />
 
-                            <TextView
-                                android:id="@+id/welcomeText"
-                                android:layout_width="200dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="10dp"
-                                android:paddingLeft="10dp"
-                                android:text="Welcome,"
-                                android:textColor="@color/white"
-                                android:textSize="30dp"
-                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="-1dp"
+                                    android:paddingLeft="10dp"
+                                    android:text="Welcome,"
+                                    android:textColor="@color/white"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/welcomeText"
+
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="10dp"
+                                    android:text="Harold Harry"
+                                    android:textColor="@color/white"
+                                    android:textSize="25dp"
+                                    android:layout_marginTop="-5dp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+
+
+
+
+
 
                             <ImageView
                                 android:id="@+id/dots_menu"
@@ -111,6 +137,8 @@
                                         android:textSize="30dp" />
 
                                     <TextView
+                                        android:id="@+id/HiText"
+                                        android:layout_marginLeft="5dp"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingTop="20dp"
@@ -121,7 +149,6 @@
                                 </LinearLayout>
 
                                 <TextView
-                                    android:id="@+id/HiText"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="30dp"

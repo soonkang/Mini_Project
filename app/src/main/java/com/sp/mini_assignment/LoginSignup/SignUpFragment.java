@@ -52,7 +52,7 @@ public class SignUpFragment extends Fragment {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                database = FirebaseDatabase.getInstance("https://mini-assignment-signup-login-default-rtdb.firebaseio.com/");
+                database = FirebaseDatabase.getInstance("https://carparks-ddecb-default-rtdb.asia-southeast1.firebasedatabase.app/");
                 reference = database.getReference("users");
 
                 String name = signupName.getText().toString();
@@ -61,8 +61,7 @@ public class SignUpFragment extends Fragment {
                 String password = signupPassword.getText().toString();
 
                 LoginHelper loginhelper = new LoginHelper(name, email, username, password);
-                reference.child(name).setValue(loginhelper);
-                reference.child(password).setValue(loginhelper)
+                reference.child(username).setValue(loginhelper)
 
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override

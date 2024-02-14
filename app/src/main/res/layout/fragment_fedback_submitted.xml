@@ -41,7 +41,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/backtohome"
         android:layout_width="167dp"
         android:layout_height="49dp"
         android:text="HOME"

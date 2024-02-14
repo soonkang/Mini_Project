@@ -44,6 +44,7 @@ import com.sp.mini_assignment.Adapters.Carpark;
 import com.sp.mini_assignment.FavouriteCarpark.FavouriteCarpark;
 import com.sp.mini_assignment.GoogleMap.carparklocation_map_fragment;
 import com.sp.mini_assignment.Interfaces.OnDirectionsClickListener;
+import com.sp.mini_assignment.Interfaces.OnLoginSuccessListener;
 import com.sp.mini_assignment.Settings.HelpCentreFragment;
 import com.sp.mini_assignment.History.HistoryFragment;
 import com.sp.mini_assignment.GoogleMap.Map_GPS_Fragment;
@@ -80,7 +81,6 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
     private static final int MENU_ITEM_EXIT = R.id.nav_exit;
 
 
-
     DrawerLayout drawerLayout;
     NavigationView navigationView;
 
@@ -99,15 +99,11 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
     SearchResultsAdapter searchResultsAdapter;
 
 
-
     List<Carpark> carparkList, searchResultsList;
 
     favouriteCarparkHelper favouriteCarparkHelper;
 
     TextView WelcomeText, HiText;
-
-
-
 
 
     @Override
@@ -154,26 +150,27 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
         HiText = findViewById(R.id.HiText);
 
 
+        FirebaseDatabase databaseNigel = FirebaseDatabase.getInstance("https://carparks-ddecb-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        DatabaseReference reference = databaseNigel.getReference("users");
 
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                    String username = userSnapshot.child("username").getValue().toString();
+                    Log.d("Firebase", "Username: " + username);
+                    WelcomeText.setText(username);
+                    HiText.setText(username);
 
-        FirebaseDatabase databaseNigel = FirebaseDatabase.getInstance("https://mini-assignment-signup-login-default-rtdb.firebaseio.com/");
-        DatabaseReference reference =databaseNigel.getReference("users");
+                    break; // Exit loop after getting the first username
+                }
+            }
 
-        UserNameValueEventListener userNameListener = new UserNameValueEventListener();
-        reference.addListenerForSingleValueEvent(userNameListener);
-
-        // Fetch the user data using the user's name as the key
-
-
-
-
-
-
-
-
-
-
-
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors
+            }
+        });
 
 
         // Get a reference to the database
@@ -248,7 +245,7 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
                 String carparkPrice = dataSnapshot.child("carparkPrice").getValue(String.class);
 
                 // Create a Carpark object using the retrieved data
-                Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0",1,  "half", 1.3798, 103.9597);
+                Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0", 1, "half", 1.3798, 103.9597);
                 // Add the carpark object to the list
                 carparkList.add(carpark);
                 Log.d("FirebaseData", "carparkName: " + carparkName + ", carparkDistance: " + carparkDistance + ", carparkImage: " + carparkImage);
@@ -296,8 +293,8 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
                 // Create a Carpark object using the retrieved data
                 Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0", 2, "empty", 1.3350, 103.7468);
                 // Checking if Image is  passed as URL
-                String carparkUrl  = carpark.getCarparkImage();
-                Log.d("carparkURL" , carparkUrl);
+                String carparkUrl = carpark.getCarparkImage();
+                Log.d("carparkURL", carparkUrl);
                 // Add the carpark object to the list
                 carparkList.add(carpark);
 
@@ -341,10 +338,10 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
                 String carparkPrice = dataSnapshot.child("carparkPrice").getValue(String.class);
 
                 // Create a Carpark object using the retrieved data
-                Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0", 3, "full", 1.452684,  103.81693);
+                Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0", 3, "full", 1.452684, 103.81693);
                 // Checking if Image is  passed as URL
-                String carparkUrl  = carpark.getCarparkImage();
-                Log.d("carparkURL" , carparkUrl);
+                String carparkUrl = carpark.getCarparkImage();
+                Log.d("carparkURL", carparkUrl);
                 // Add the carpark object to the list
                 carparkList.add(carpark);
 
@@ -390,8 +387,8 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
                 // Create a Carpark object using the retrieved data
                 Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0", 4, "empty", 1.21968, 103.564246);
                 // Checking if Image is  passed as URL
-                String carparkUrl  = carpark.getCarparkImage();
-                Log.d("carparkURL" , carparkUrl);
+                String carparkUrl = carpark.getCarparkImage();
+                Log.d("carparkURL", carparkUrl);
                 // Add the carpark object to the list
                 carparkList.add(carpark);
 
@@ -437,8 +434,8 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
                 // Create a Carpark object using the retrieved data
                 Carpark carpark = new Carpark(carparkImage, carparkName, carparkDistance, carparkLevel, carparkDate, carparkPrice, "0", 5, "half", 1.3630, 103.8476);
                 // Checking if Image is  passed as URL
-                String carparkUrl  = carpark.getCarparkImage();
-                Log.d("carparkURL" , carparkUrl);
+                String carparkUrl = carpark.getCarparkImage();
+                Log.d("carparkURL", carparkUrl);
                 // Add the carpark object to the list
                 carparkList.add(carpark);
 
@@ -472,30 +469,24 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
         });
 
 
-
-
-
-
-
         home_searchBar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    if (hasFocus) {
-                        // EditText has gained focus
-                        Log.d("EditTextFocus", "EditText has gained focus");
-                        home_search_menu.setVisibility(View.VISIBLE);
-                        searchResultsAdapter.updateSearchResults(getCurrentQuery());
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // EditText has gained focus
+                    Log.d("EditTextFocus", "EditText has gained focus");
+                    home_search_menu.setVisibility(View.VISIBLE);
+                    searchResultsAdapter.updateSearchResults(getCurrentQuery());
 
-                        // Show or hide the search menu based on your logic
-                    } else {
-                        // EditText has lost focus
-                        Log.d("EditTextFocus", "EditText has lost focus");
-                        home_search_menu.setVisibility(View.GONE);
-                        // Hide the search menu if needed
-                    }
+                    // Show or hide the search menu based on your logic
+                } else {
+                    // EditText has lost focus
+                    Log.d("EditTextFocus", "EditText has lost focus");
+                    home_search_menu.setVisibility(View.GONE);
+                    // Hide the search menu if needed
                 }
-            });
-
+            }
+        });
 
 
         home_searchBar.addTextChangedListener(new TextWatcher() {
@@ -515,7 +506,6 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
                 // Not used, but required to implement TextWatcher
             }
         });
-
 
 
         nav_drawer.setOnClickListener(new View.OnClickListener() {
@@ -542,21 +532,18 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
                         // Handle menu item clicks here
                         int itemId = item.getItemId();
 
-                        if(itemId == R.id.dots_menu_item_socials)
-                        {
+                        if (itemId == R.id.dots_menu_item_socials) {
                             replaceFragment(new SocialsFragment(), false);
-                                return true;
+                            return true;
                         }
 
-                        if(itemId == R.id.dots_menu_item_map_view)
-                        {
+                        if (itemId == R.id.dots_menu_item_map_view) {
                             Intent intent = new Intent(Main.this, Map_GPS_Fragment.class);
                             startActivity(intent);
                             return true;
                         }
 
-                        if(itemId == R.id.dots_menu_item_favourites)
-                        {
+                        if (itemId == R.id.dots_menu_item_favourites) {
                             FavouriteCarpark fragment = new FavouriteCarpark(favouriteCarparkHelper);
                             replaceFragment(fragment, true);
                             return true;
@@ -582,14 +569,10 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
                 btmNavigationView.getMenu().findItem(btmNavigationView.getSelectedItemId()).setChecked(false);
 
 
-
-
-
                 if (itemId == MENU_ITEM_SETTING) {
                     replaceFragment(new SettingsFragment(), true);
                     drawerLayout.closeDrawer(navigationView);
                     btmNavigationView.getMenu().findItem(btmNavigationView.getSelectedItemId()).setChecked(false);
-
 
 
                     return true;
@@ -621,14 +604,12 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
                     return true;
 
 
-
                 }
 
 
                 return false;
             }
         });
-
 
 
     }
@@ -656,18 +637,16 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
         if (itemId == R.id.qr_page) {
             replaceFragment(new QRScannerFragment(), false);
             return true;
-        } else if(itemId == R.id.home_page) {
+        } else if (itemId == R.id.home_page) {
             replaceFragment(new HomeFragment(), false);
             return true;
         } else if (itemId == R.id.history_page) {
-        replaceFragment(new HistoryFragment(), false);
-        return true; }
-        else if (itemId == R.id.notifications_page) {
+            replaceFragment(new HistoryFragment(), false);
+            return true;
+        } else if (itemId == R.id.notifications_page) {
             replaceFragment(new NotificationFragment(), false);
             return true;
         }
-
-
 
 
         return false;
@@ -677,7 +656,6 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
     public String getCurrentQuery() {
         return home_searchBar.getText().toString();
     }
-
 
 
     @Override
@@ -703,27 +681,6 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
         intent.putExtra("carpark_location", new LatLng(clickedCarpark.getLatitude(), clickedCarpark.getLongitude()));
         startActivity(intent);
     }
-
-    private class UserNameValueEventListener implements ValueEventListener {
-        private String userName;
-
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            if (dataSnapshot.exists() && dataSnapshot.hasChild("username")) {
-                userName = dataSnapshot.child("username").getValue(String.class);
-                if (userName != null) {
-                    runOnUiThread(() -> WelcomeText.setText("Welcome, " + userName));
-                }
-            }
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-            Log.e(TAG, "Error fetching user: ", databaseError.toException());
-        }
-    }
-
-
 
 
 
