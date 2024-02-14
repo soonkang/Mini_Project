@@ -24,6 +24,8 @@ public class Carpark implements Parcelable {
     public String carparkCapacity;
 
     public Double latitude, longitude;
+    public String carparkTime;
+
 
 
     public  int key_id;
@@ -100,7 +102,12 @@ public class Carpark implements Parcelable {
     public double getLongitude() {
         return longitude;
     }
-
+    public String getCarparkTime() {
+        return carparkTime;
+    }
+    public void setCarparkTime(String carparkTime) {
+        this.carparkTime = carparkTime;
+    }
 
 
     @Override
