@@ -1,6 +1,7 @@
 package com.sp.mini_assignment.Adapters;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,9 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
         // Set username
         TextView usernameTextView = convertView.findViewById(R.id.usernameName);
         usernameTextView.setText(comment.getUsername());
+
+        ImageView imageUri = convertView.findViewById(R.id.comment_photo);
+        imageUri.setImageURI(comment.getImageUri());
 
         return convertView;
     }

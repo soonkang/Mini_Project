@@ -2,6 +2,8 @@ package com.sp.mini_assignment.Home;
 
 import static android.app.PendingIntent.getActivity;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,6 +42,7 @@ import com.sp.mini_assignment.About.AboutFragment;
 import com.sp.mini_assignment.Adapters.CarparkAdapter;
 import com.sp.mini_assignment.Adapters.Carpark;
 import com.sp.mini_assignment.FavouriteCarpark.FavouriteCarpark;
+import com.sp.mini_assignment.GoogleMap.carparklocation_map_fragment;
 import com.sp.mini_assignment.Interfaces.OnDirectionsClickListener;
 import com.sp.mini_assignment.Settings.HelpCentreFragment;
 import com.sp.mini_assignment.History.HistoryFragment;
@@ -152,10 +155,18 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
 
 
 
+
         FirebaseDatabase databaseNigel = FirebaseDatabase.getInstance("https://mini-assignment-signup-login-default-rtdb.firebaseio.com/");
         DatabaseReference reference =databaseNigel.getReference("users");
 
-        WelcomeText.setText("Welcome,");
+        UserNameValueEventListener userNameListener = new UserNameValueEventListener();
+        reference.addListenerForSingleValueEvent(userNameListener);
+
+        // Fetch the user data using the user's name as the key
+
+
+
+
 
 
 
@@ -688,9 +699,28 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
     @Override
     public void onDirectionsClick(int position) {
         Carpark clickedCarpark = carparkList.get(position);
-        Intent intent = new Intent(Main.this, Map_GPS_Fragment.class);
+        Intent intent = new Intent(Main.this, carparklocation_map_fragment.class);
         intent.putExtra("carpark_location", new LatLng(clickedCarpark.getLatitude(), clickedCarpark.getLongitude()));
         startActivity(intent);
+    }
+
+    private class UserNameValueEventListener implements ValueEventListener {
+        private String userName;
+
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            if (dataSnapshot.exists() && dataSnapshot.hasChild("username")) {
+                userName = dataSnapshot.child("username").getValue(String.class);
+                if (userName != null) {
+                    runOnUiThread(() -> WelcomeText.setText("Welcome, " + userName));
+                }
+            }
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+            Log.e(TAG, "Error fetching user: ", databaseError.toException());
+        }
     }
 
 

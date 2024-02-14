@@ -45,6 +45,11 @@
             android:name=".GoogleMap.Map_GPS_Fragment"
             android:exported="false"
             android:label="@string/title_activity_map_gps_fragment" />
+
+        <activity
+            android:name=".GoogleMap.carparklocation_map_fragment"
+            android:exported="false"
+            android:label="@string/title_activity_map_gps_fragment" />
         <activity
             android:name=".SplashScreen.SplashActivity"
             android:exported="true">

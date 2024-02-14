@@ -57,7 +57,7 @@
                     android:hint="  Write a message" />
 
                 <ImageView
-                    android:id="@+id/camera"
+                    android:id="@+id/cameraForum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"

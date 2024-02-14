@@ -68,7 +68,7 @@ import com.google.maps.android.PolyUtil;
 
 
 
-public class Map_GPS_Fragment extends FragmentActivity implements OnMapReadyCallback {
+public class carparklocation_map_fragment extends FragmentActivity implements OnMapReadyCallback {
 
     private static final int REQUEST_LOCATION_PERMISSION = 100;
 
@@ -102,7 +102,7 @@ public class Map_GPS_Fragment extends FragmentActivity implements OnMapReadyCall
         searchView = findViewById(R.id.searchView);
 
         speechTotxt = findViewById(R.id.speechtoTxt);
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -125,7 +125,7 @@ public class Map_GPS_Fragment extends FragmentActivity implements OnMapReadyCall
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             // Permission granted, proceed with map initialization and location request
             initMap();
-            getLastLocation();
+
         } else {
             // Request location permission if not granted
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSION);
@@ -364,11 +364,7 @@ public class Map_GPS_Fragment extends FragmentActivity implements OnMapReadyCall
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
-        if (currentLocation != null) {
-            LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(latLng).title("Location (LIVE)"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        }
+
 
         carparkLocation = getCarparkLocation();
 
@@ -395,51 +391,13 @@ public class Map_GPS_Fragment extends FragmentActivity implements OnMapReadyCall
         });
     }
 
-    // Check for permission to access the device's location
-    private void getLastLocation() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            // Request the last known location
-            fusedLocationProviderClient.getLastLocation()
-                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location location) {
-                            // Got last known location. In some rare situations this can be null.
-                            if (location != null) {
-                                currentLocation = location;
-                                if (mMap != null) {
-                                    // Handle the retrieved location
-                                    LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-                                    // Do something with the latitude and longitude
-                                    mMap.addMarker(new MarkerOptions().position(latLng).title("Location (LIVE)"));
-                                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f));
-                                }
-                            }
-                        }
-                    });
-        } else {
-            // Request location permission if not granted
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSION);
-        }
-    }
 
-    // Request location method
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_LOCATION_PERMISSION) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted, proceed with location request
-                getLastLocation();
-            } else {
-                // Permission denied, handle accordingly (e.g., show a message or request permission again)
-            }
-        }
-    }
+
 
     @Override
     public void onResume() {
         super.onResume();
-        getLastLocation();
+
     }
 
     private void saveCarparkLocation(LatLng carparkLocation) {
