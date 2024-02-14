@@ -61,9 +61,9 @@
                             android:gravity="center_horizontal">
 
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/car_logo"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/Reserved_Parking_Logo"
                                 android:background="@drawable/border_background"/>
 
                             <TextView
@@ -89,9 +89,9 @@
                             android:gravity="center_horizontal">
 
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/car_logo"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/Reserved_Parking_Logo"
                                 android:background="@drawable/border_background"/>
 
                             <TextView
@@ -117,9 +117,9 @@
                             android:gravity="center_horizontal">
 
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/car_logo"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/Reserved_Parking_Logo"
                                 android:background="@drawable/border_background"/>
 
                             <TextView
@@ -154,9 +154,9 @@
                         android:gravity="center_horizontal">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/car_logo"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@drawable/Open_Parking_Logo"
                             android:background="@drawable/border_background"/>
 
                         <TextView
@@ -182,9 +182,9 @@
                         android:gravity="center_horizontal">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/car_logo"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@drawable/Open_Parking_Logo"
                             android:background="@drawable/border_background"/>
 
                         <TextView
@@ -210,9 +210,9 @@
                         android:gravity="center_horizontal">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/car_logo"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@drawable/Open_Parking_Logo"
                             android:background="@drawable/border_background"/>
 
                         <TextView
@@ -245,9 +245,9 @@
                         android:gravity="center_horizontal">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/car_logo"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@drawable/Open_Parking_Logo"
                             android:background="@drawable/border_background"/>
 
                         <TextView
@@ -273,9 +273,9 @@
                         android:gravity="center_horizontal">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/car_logo"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@drawable/Open_Parking_Logo"
                             android:background="@drawable/border_background"/>
 
                         <TextView
@@ -301,9 +301,9 @@
                         android:gravity="center_horizontal">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/car_logo"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@drawable/Open_Parking_Logo"
                             android:background="@drawable/border_background"/>
 
                         <TextView
@@ -332,7 +332,8 @@
         <View
             android:id="@+id/clickView"
             android:layout_width="255dp"
-            android:layout_height="260dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="40dp"
             android:layout_gravity="center"
             android:layout_marginLeft="23dp"
             android:onClick="showBottomDialog" />
