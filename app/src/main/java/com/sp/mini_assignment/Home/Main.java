@@ -186,9 +186,8 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
         pasirRisRef.child("carparkLevel").setValue("Slot 2");
         pasirRisRef.child("carparkDate").setValue("Monday");
         pasirRisRef.child("carparkPrice").setValue("\n" +
-                "Rate: 7am-7pm | $1.23/1st 30mins\n" +
-                "                      | $0.05/sub min\n" +
-                "       7pm-11:30pm| $0.03/min");
+                "$1.23/1st 30mins\n" +
+                "$0.05/sub min");
 
         jurongEastRef.child("carparkName").setValue("Jurong Street 21, Carpark A 45, Singapore 381929");
         jurongEastRef.child("carparkDistance").setValue("4.4km");
@@ -196,9 +195,8 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
         jurongEastRef.child("carparkLevel").setValue("Slot 6");
         jurongEastRef.child("carparkDate").setValue("Monday");
         jurongEastRef.child("carparkPrice").setValue("\n" +
-                "Rate: 7am-7pm | $1.23/1st 30mins\n" +
-                "                      | $0.05/sub min\n" +
-                "       7pm-11:30pm| $0.03/min");
+                "$1.23/1st 30mins\n" +
+                "$0.05/sub min");
 
         sembawangRef.child("carparkName").setValue("Sembawang Montreal Drive, Blk 200, Singapore 627129");
         sembawangRef.child("carparkDistance").setValue("2.9km");
@@ -206,9 +204,8 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
         sembawangRef.child("carparkLevel").setValue("Slot 3");
         sembawangRef.child("carparkDate").setValue("Monday");
         sembawangRef.child("carparkPrice").setValue("\n" +
-                "Rate: 7am-7pm | $1.23/1st 30mins\n" +
-                "                      | $0.05/sub min\n" +
-                "       7pm-11:30pm| $0.03/min");
+                "$1.23/1st 30mins\n" +
+                "$0.05/sub min");
 
         tampinesRef.child("carparkName").setValue("Tampines Hub Carpark, Block A, Singapore 221120");
         tampinesRef.child("carparkDistance").setValue("2.4km");
@@ -216,9 +213,8 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
         tampinesRef.child("carparkLevel").setValue("Slot 1");
         tampinesRef.child("carparkDate").setValue("Monday");
         tampinesRef.child("carparkPrice").setValue("\n" +
-                "Rate: 7am-7pm | $1.23/1st 30mins\n" +
-                "                      | $0.05/sub min\n" +
-                "       7pm-11:30pm| $0.03/min");
+                "$1.23/1st 30mins\n" +
+                "$0.05/sub min");
 
         bishanRef.child("carparkName").setValue("Bishan MOE Learning Centre, Carpark 12, Singapore 425322");
         bishanRef.child("carparkDistance").setValue("6.8km");
@@ -226,9 +222,8 @@ public class Main extends AppCompatActivity implements OnItemClickListener, OnDi
         bishanRef.child("carparkLevel").setValue("Slot 12");
         bishanRef.child("carparkDate").setValue("Monday");
         bishanRef.child("carparkPrice").setValue("\n" +
-                "Rate: 7am-7pm | $1.23/1st 30mins\n" +
-                "                      | $0.05/sub min\n" +
-                "       7pm-11:30pm| $0.03/min");
+                "$1.23/1st 30mins\n" +
+                "$0.05/sub min");
 
         // Retrieve data from Carpark_PasirRis node
         pasirRisRef.addListenerForSingleValueEvent(new ValueEventListener() {

@@ -39,7 +39,7 @@
 
                 <ImageView
                     android:layout_width="420dp"
-                    android:layout_height="400dp"
+                    android:layout_height="500dp"
                     android:src="@drawable/background_blend"/>
 
                 <androidx.recyclerview.widget.RecyclerView

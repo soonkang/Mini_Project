@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Context;
 import android.content.Intent;
 
 import android.content.SharedPreferences;
@@ -89,6 +90,8 @@ public class Map_GPS_Fragment extends FragmentActivity implements OnMapReadyCall
     private Intent speechRecognizerIntent;
 
     private boolean isListening = false;
+
+    private LatLng carparkLocation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,23 +104,20 @@ public class Map_GPS_Fragment extends FragmentActivity implements OnMapReadyCall
         speechTotxt = findViewById(R.id.speechtoTxt);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-
-        // Get the Intent that started this activity
         Intent intent = getIntent();
-
-        // Get the Bundle containing the extras
-        Bundle bundle = intent.getExtras();
-
-        // Get the Latitude and Longitude values from the Bundle
-        if (bundle != null) {
-            double latitude = bundle.getDouble("latitude");
-            double longitude = bundle.getDouble("longitude");
-
-            // Use the Latitude and Longitude values to add a marker to the map
-            LatLng location = new LatLng(latitude, longitude);
-            mMap.addMarker(new MarkerOptions().position(location).title("Destination"));
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 15f));
+        if (intent != null) {
+            Bundle bundle = intent.getExtras();
+            if (bundle != null) {
+                carparkLocation = (LatLng) bundle.get("carpark_location");
+                if (carparkLocation != null) {
+                    // Save the carparkLocation in SharedPreferences
+                    saveCarparkLocation(carparkLocation);
+                }
+            }
         }
+
+
+
 
 
 
@@ -370,6 +370,16 @@ public class Map_GPS_Fragment extends FragmentActivity implements OnMapReadyCall
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         }
 
+        carparkLocation = getCarparkLocation();
+
+        if (carparkLocation != null) {
+            mMap.addMarker(new MarkerOptions()
+                    .position(carparkLocation)
+                    .title("Carpark Location"));
+
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(carparkLocation, 15f));
+        }
+
         FloatingActionButton recenterButton = findViewById(R.id.recenterButton);
         recenterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -429,6 +439,29 @@ public class Map_GPS_Fragment extends FragmentActivity implements OnMapReadyCall
     public void onResume() {
         super.onResume();
         getLastLocation();
+    }
+
+    private void saveCarparkLocation(LatLng carparkLocation) {
+        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("carpark_location_lat", String.valueOf(carparkLocation.latitude));
+        editor.putString("carpark_location_lng", String.valueOf(carparkLocation.longitude));
+        editor.apply();
+    }
+
+
+    private LatLng getCarparkLocation() {
+        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+        String carparkLat = sharedPreferences.getString("carpark_location_lat", null);
+        String carparkLng = sharedPreferences.getString("carpark_location_lng", null);
+
+        if (carparkLat != null && carparkLng != null) {
+            double latitude = Double.parseDouble(carparkLat);
+            double longitude = Double.parseDouble(carparkLng);
+            return new LatLng(latitude, longitude);
+        } else {
+            return null;
+        }
     }
 
 }

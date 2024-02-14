@@ -85,8 +85,6 @@ public class BookedSlotAdapter extends RecyclerView.Adapter<BookedSlotAdapter.Vi
                     .into(carparkImage);
 
             carparkName.setText(carpark.getCarparkName());
-            carparkTime.setText(carpark.getCarparkTime());
-            carparkDate.setText(carpark.getCarparkDate());
             carparkPrice.setText(carpark.getCarparkPrice());
         }
 

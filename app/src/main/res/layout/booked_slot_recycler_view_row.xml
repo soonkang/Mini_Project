@@ -19,8 +19,7 @@
                 android:layout_height="400dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:src="@color/white" />
+                android:layout_marginTop="10dp"/>
 
             <ImageView
                 android:id="@+id/booked_slot_carpark_image"
@@ -51,6 +50,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="250dp"
+                android:layout_marginLeft="15dp"
+                android:textAlignment="center"
                 android:text="$1.23/1st 30mins\n$0.05/sub min"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -59,7 +60,7 @@
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="300dp"
+                android:layout_marginTop="310dp"
                 android:layout_marginLeft="80dp"
                 android:text="Date" />
 
@@ -67,7 +68,7 @@
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="350dp"
+                android:layout_marginTop="370dp"
                 android:layout_marginLeft="80dp"
                 android:text="Time" />
 
