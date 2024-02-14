@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:gravity="center"
-        android:text="Fedback Form Confirmation"
+        android:text="Feedback Form Confirmation"
         android:textColor="#E4DCDC"
         android:textSize="48sp"
         android:textStyle="bold"

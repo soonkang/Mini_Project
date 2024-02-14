@@ -16,7 +16,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="45dp"
-        android:text="Fedback Form"
+        android:text="Feedback Form"
         android:textColor="#E4DCDC"
         android:textSize="48sp"
         android:textStyle="bold"
